@@ -130,6 +130,89 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19">
+        <div className="container mx-auto">
+          <div className="space-y-16">
+            <div className="space-y-6">
+              <div className="flex items-center justify-center">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                    About Mindora
+                  </div>
+                </div>
+              </div>
+              <h2 className="text-[32px] leading-150 font-medium text-center px-10">
+                At Mindora, we believe mental wellness is a vital part of a
+                fulfilling life. Our licensed therapists provide{" "}
+                <span className="text-[#51575C]">
+                  personalized, empathetic care to help you navigate stress,
+                  anxiety, trauma, or life transitions all in a safe,
+                  confidential space.
+                </span>
+              </h2>
+              <div className="flex items-center justify-center">
+                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  More About Us
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-stretch gap-8">
+              <div className="w-[475px] h-[600px] bg-gray-400 rounded-2xl" />
+              <div className="flex-1 flex flex-col justify-between gap-8">
+                <div className="w-full flex-1 bg-gray-400 rounded-2xl" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-end gap-3">
+                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                      25<span className="text-primary">+</span>
+                    </div>
+                    <div className="text-[#51575C] leading-150 text-lg">
+                      Years
+                      <br />
+                      Experience
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-3">
+                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                      20<span className="text-primary">+</span>
+                    </div>
+                    <div className="text-[#51575C] leading-150 text-lg">
+                      Professional
+                      <br />
+                      Therapist
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-3">
+                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                      98<span className="text-primary">%</span>
+                    </div>
+                    <div className="text-[#51575C] leading-150 text-lg">
+                      Clients
+                      <br />
+                      Satisfaction
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
