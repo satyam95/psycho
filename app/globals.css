@@ -3,6 +3,11 @@
 @theme {
   --font-raleway: var(--font-raleway);
   --font-playfair-display: var(--font-playfair-display);
+
+  --leading-150: 1.5;
+  --leading-120: 1.2;
+
+  --color-primary: oklch(0.39 0.06 193.35);
 }
 
 body {
