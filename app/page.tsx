@@ -319,6 +319,83 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19">
+        <div className="container mx-auto">
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="flex items-center justify-center">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                    Why Choose Us
+                  </div>
+                </div>
+              </div>
+              <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                Trusted Mental Health Support
+                <br />
+                <span className="font-playfair-display italic">
+                  That Empowers You
+                </span>
+              </h2>
+            </div>
+            <div className="space-y-0">
+              <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center">
+                <div className="h-24 w-24 rounded-full bg-white flex items-center justify-center">
+                  <Image
+                    src="/play.png"
+                    alt="play"
+                    width={24}
+                    height={31}
+                    className="ml-2"
+                  />
+                </div>
+              </div>
+              <div className="flex justify-center -mt-24">
+                <div className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6">
+                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                    <div className="font-semibold text-[22px] leading-120">
+                      👩‍⚕️ Licensed{" "}
+                      <span className="font-playfair-display italic">
+                        Therapists
+                      </span>
+                    </div>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      All our professionals are certifiedd offi experienced,
+                      deeply committ to ethical, mentaly personalized.
+                    </p>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                    <div className="font-semibold text-[22px] leading-120">
+                      🔒 Confidential{" "}
+                      <span className="font-playfair-display italic">
+                        & Save
+                      </span>
+                    </div>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Your privacy is our top priority. Every hass session is
+                      fully secure and judgment-its freel, mentaly personalized.
+                    </p>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                    <div className="font-semibold text-[22px] leading-120">
+                      💬 Flexible{" "}
+                      <span className="font-playfair-display italic">
+                        & Accessible
+                      </span>
+                    </div>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Online or in-person sessions available to suit your
+                      schedule — anytime, this ilearn anywhere, mentaly
+                      personalized.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
