@@ -3,6 +3,65 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
+      <header className="absolute top-0 left-0 w-full z-50">
+        <div className="container mx-auto py-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-20">
+              <div className="text-[26px] leading-120 tracking-[-3%] font-semibold">
+                Mind
+                <span className="font-playfair-display italic">era</span>
+              </div>
+              <div className="flex items-center gap-8">
+                <div className="text-base leading-120 font-medium">Home</div>
+                <div className="text-base leading-120 font-medium">
+                  Services
+                </div>
+                <div className="text-base leading-120 font-medium">About</div>
+                <div className="text-base leading-120 font-medium">
+                  Projects
+                </div>
+                <div className="text-base leading-120 font-medium">Contact</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <path d="M4 5h16" />
+                <path d="M4 12h16" />
+                <path d="M4 19h16" />
+              </svg>
+              <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                Get In Touch
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
       <main>
         <section className="pt-5 pb-19">
           <div className="container mx-auto">
