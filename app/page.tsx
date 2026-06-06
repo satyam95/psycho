@@ -2,245 +2,159 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
-      <section className="pt-5 pb-19">
-        <div className="container mx-auto">
-          <div className="flex items-stretch gap-10">
-            <div className="w-[55%] flex flex-col justify-end">
-              <div className="space-y-37">
-                <div className="space-y-8">
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                      <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                        Mental Clarity
-                      </div>
-                    </div>
-                    <h1 className="text-[64px] font-semibold leading-120 tracking-[-3%]">
-                      Find Balance Trusted{" "}
-                      <span className="font-playfair-display italic">
-                        Mental Health Experts
-                      </span>
-                    </h1>
-                    <p className="text-base leading-150 text-[#51575C] max-w-[512px]">
-                      Explore safe, confidential therapy sessions to support
-                      your emotional well-being, anxiety relief, and personal
-                      growth guided by professional licensed psychologists.
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                      Book A Session
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                    <div className="border border-primary py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5">
-                      Explore Services
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-primary"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center">
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1.5">
-                      <Image
-                        src="/star.png"
-                        alt="star"
-                        height={20}
-                        width={20}
-                      />
-                      <div className="text-base leading-150">
-                        4.9/5 Rating clients
-                      </div>
-                    </div>
-                    <div className="text-[#51575C] text-base leading-150">
-                      Trusted by 1,200+ Clients
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative w-[45%] h-195 bg-gray-400 rounded-2xl">
-              <div className="absolute top-45 left-28">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  <div className="text-sm leading-[150%] text-white">
-                    Certified Therapists
-                  </div>
-                </div>
-              </div>
-              <div className="absolute top-65 right-18">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  <div className="text-sm leading-[150%] text-white">
-                    100% Confidential
-                  </div>
-                </div>
-              </div>
-              <div className="absolute bottom-74 left-12">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  <div className="text-sm leading-[150%] text-white">
-                    HIPAA Compliant
-                  </div>
-                </div>
-              </div>
-              <div className="absolute bottom-47 right-20">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  <div className="text-sm leading-[150%] text-white">
-                    Flexible Session
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19">
-        <div className="container mx-auto">
-          <div className="space-y-16">
-            <div className="space-y-6">
-              <div className="flex items-center justify-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                    About Mindora
-                  </div>
-                </div>
-              </div>
-              <h3 className="text-[32px] leading-150 font-medium text-center px-10">
-                At Mindora, we believe mental wellness is a vital part of a
-                fulfilling life. Our licensed therapists provide{" "}
-                <span className="text-[#51575C]">
-                  personalized, empathetic care to help you navigate stress,
-                  anxiety, trauma, or life transitions all in a safe,
-                  confidential space.
-                </span>
-              </h3>
-              <div className="flex items-center justify-center">
-                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                  More About Us
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-stretch gap-8">
-              <div className="w-[475px] h-[600px] bg-gray-400 rounded-2xl" />
-              <div className="flex-1 flex flex-col justify-between gap-8">
-                <div className="w-full flex-1 bg-gray-400 rounded-2xl" />
-                <div className="flex items-center justify-between">
-                  <div className="flex items-end gap-3">
-                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
-                      25<span className="text-primary">+</span>
-                    </div>
-                    <div className="text-[#51575C] leading-150 text-lg">
-                      Years
-                      <br />
-                      Experience
-                    </div>
-                  </div>
-                  <div className="flex items-end gap-3">
-                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
-                      20<span className="text-primary">+</span>
-                    </div>
-                    <div className="text-[#51575C] leading-150 text-lg">
-                      Professional
-                      <br />
-                      Therapist
-                    </div>
-                  </div>
-                  <div className="flex items-end gap-3">
-                    <div className="text-6xl leading-120 font-semibold font-playfair-display">
-                      98<span className="text-primary">%</span>
-                    </div>
-                    <div className="text-[#51575C] leading-150 text-lg">
-                      Clients
-                      <br />
-                      Satisfaction
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19 px-3">
-        <div className="bg-[#E3EEEE] rounded-2xl py-38">
+    <>
+      <main>
+        <section className="pt-5 pb-19">
           <div className="container mx-auto">
-            <div className="flex items-stretch gap-20">
-              <div className="w-1/2 space-y-8">
-                <div className="space-y-6">
+            <div className="flex items-stretch gap-10">
+              <div className="w-[55%] flex flex-col justify-end">
+                <div className="space-y-37">
+                  <div className="space-y-8">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                          Mental Clarity
+                        </div>
+                      </div>
+                      <h1 className="text-[64px] font-semibold leading-120 tracking-[-3%]">
+                        Find Balance Trusted{" "}
+                        <span className="font-playfair-display italic">
+                          Mental Health Experts
+                        </span>
+                      </h1>
+                      <p className="text-base leading-150 text-[#51575C] max-w-[512px]">
+                        Explore safe, confidential therapy sessions to support
+                        your emotional well-being, anxiety relief, and personal
+                        growth guided by professional licensed psychologists.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                        Book A Session
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                      <div className="border border-primary py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5">
+                        Explore Services
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-primary"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center">
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <Image
+                          src="/star.png"
+                          alt="star"
+                          height={20}
+                          width={20}
+                        />
+                        <div className="text-base leading-150">
+                          4.9/5 Rating clients
+                        </div>
+                      </div>
+                      <div className="text-[#51575C] text-base leading-150">
+                        Trusted by 1,200+ Clients
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative w-[45%] h-195 bg-gray-400 rounded-2xl">
+                <div className="absolute top-45 left-28">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <div className="text-sm leading-[150%] text-white">
+                      Certified Therapists
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute top-65 right-18">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <div className="text-sm leading-[150%] text-white">
+                      100% Confidential
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-74 left-12">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <div className="text-sm leading-[150%] text-white">
+                      HIPAA Compliant
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-47 right-20">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <div className="text-sm leading-[150%] text-white">
+                      Flexible Session
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-19">
+          <div className="container mx-auto">
+            <div className="space-y-16">
+              <div className="space-y-6">
+                <div className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                     <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                      Our Services
+                      About Mindora
                     </div>
                   </div>
-                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
-                    Professional Mental Health{" "}
-                    <span className="font-playfair-display italic">
-                      Support Tailored to You
-                    </span>
-                  </h2>
-                  <p className="text-base leading-150 text-[#51575C]">
-                    We provide a wide range of therapy and mental wellness
-                    services to support your unique you're facing anxiety,
-                    depression, trauma, or personal growth. Our team ensures
-                    each session is safe, confidential, and client-centered.
-                  </p>
                 </div>
-                <div className="flex items-center">
+                <h3 className="text-[32px] leading-150 font-medium text-center px-10">
+                  At Mindora, we believe mental wellness is a vital part of a
+                  fulfilling life. Our licensed therapists provide{" "}
+                  <span className="text-[#51575C]">
+                    personalized, empathetic care to help you navigate stress,
+                    anxiety, trauma, or life transitions all in a safe,
+                    confidential space.
+                  </span>
+                </h3>
+                <div className="flex items-center justify-center">
                   <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                    View All Services
+                    More About Us
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -259,57 +173,39 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 relative">
-                <div className="absolute top-0 left-0 z-10 w-full h-full">
-                  <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
-                </div>
-                <div className="absolute top-6 left-0 z-20 w-full h-[calc(100%-1.5rem)]">
-                  <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
-                </div>
-                <div className="absolute bottom-0 left-0 z-30">
-                  <div className="bg-white rounded-xl border border-[#EEF2F5] p-6">
-                    <div className="space-y-8">
-                      <div className="flex items-center justify-between">
-                        <div className="w-16 h-16 rounded-full bg-gray-300" />
-                        <div className="space-y-0">
-                          <div className="text-sm leading-150 tracking-[8%] text-[#51575C] font-medium uppercase">
-                            Start From
-                          </div>
-                          <div className="flex items-end gap-1">
-                            <div className="font-semibold text-[22px] leading-120">
-                              $185
-                            </div>
-                            <div className="font-playfair-display text-sm italic leading-120">
-                              /Session
-                            </div>
-                          </div>
-                        </div>
+              <div className="flex items-stretch gap-8">
+                <div className="w-[475px] h-[600px] bg-gray-400 rounded-2xl" />
+                <div className="flex-1 flex flex-col justify-between gap-8">
+                  <div className="w-full flex-1 bg-gray-400 rounded-2xl" />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-end gap-3">
+                      <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                        25<span className="text-primary">+</span>
                       </div>
-                      <div className="space-y-4">
-                        <div className="space-y-3">
-                          <div className="font-semibold text-[22px] text-[#0F7676] leading-120">
-                            Family{" "}
-                            <span className="font-playfair-display italic">
-                              Therapy
-                            </span>
-                          </div>
-                          <p className="text-base leading-150 text-[#51575C]">
-                            Build healthier family dynamics and address
-                            collective issues mental through collaborative,
-                            guided sessions.
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
-                            Group Healing
-                          </div>
-                          <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
-                            Behavioral Guidance
-                          </div>
-                          <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
-                            Stronger Bonds
-                          </div>
-                        </div>
+                      <div className="text-[#51575C] leading-150 text-lg">
+                        Years
+                        <br />
+                        Experience
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-3">
+                      <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                        20<span className="text-primary">+</span>
+                      </div>
+                      <div className="text-[#51575C] leading-150 text-lg">
+                        Professional
+                        <br />
+                        Therapist
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-3">
+                      <div className="text-6xl leading-120 font-semibold font-playfair-display">
+                        98<span className="text-primary">%</span>
+                      </div>
+                      <div className="text-[#51575C] leading-150 text-lg">
+                        Clients
+                        <br />
+                        Satisfaction
                       </div>
                     </div>
                   </div>
@@ -317,569 +213,43 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="py-19">
-        <div className="container mx-auto">
-          <div className="space-y-12">
-            <div className="space-y-6">
-              <div className="flex items-center justify-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                    Why Choose Us
-                  </div>
-                </div>
-              </div>
-              <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
-                Trusted Mental Health Support
-                <br />
-                <span className="font-playfair-display italic">
-                  That Empowers You
-                </span>
-              </h2>
-            </div>
-            <div className="space-y-0">
-              <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center">
-                <div className="h-24 w-24 rounded-full bg-white flex items-center justify-center">
-                  <Image
-                    src="/play.png"
-                    alt="play"
-                    width={24}
-                    height={31}
-                    className="ml-2"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center -mt-24">
-                <div className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6">
-                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
-                    <div className="font-semibold text-[22px] leading-120">
-                      👩‍⚕️ Licensed{" "}
-                      <span className="font-playfair-display italic">
-                        Therapists
-                      </span>
+        </section>
+        <section className="py-19 px-3">
+          <div className="bg-[#E3EEEE] rounded-2xl py-38">
+            <div className="container mx-auto">
+              <div className="flex items-stretch gap-20">
+                <div className="w-1/2 space-y-8">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                        Our Services
+                      </div>
                     </div>
+                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                      Professional Mental Health{" "}
+                      <span className="font-playfair-display italic">
+                        Support Tailored to You
+                      </span>
+                    </h2>
                     <p className="text-base leading-150 text-[#51575C]">
-                      All our professionals are certifiedd offi experienced,
-                      deeply committ to ethical, mentaly personalized.
+                      We provide a wide range of therapy and mental wellness
+                      services to support your unique you're facing anxiety,
+                      depression, trauma, or personal growth. Our team ensures
+                      each session is safe, confidential, and client-centered.
                     </p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
-                    <div className="font-semibold text-[22px] leading-120">
-                      🔒 Confidential{" "}
-                      <span className="font-playfair-display italic">
-                        & Save
-                      </span>
-                    </div>
-                    <p className="text-base leading-150 text-[#51575C]">
-                      Your privacy is our top priority. Every hass session is
-                      fully secure and judgment-its freel, mentaly personalized.
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
-                    <div className="font-semibold text-[22px] leading-120">
-                      💬 Flexible{" "}
-                      <span className="font-playfair-display italic">
-                        & Accessible
-                      </span>
-                    </div>
-                    <p className="text-base leading-150 text-[#51575C]">
-                      Online or in-person sessions available to suit your
-                      schedule — anytime, this ilearn anywhere, mentaly
-                      personalized.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19">
-        <div className="container mx-auto">
-          <div className="flex items-stretch gap-12">
-            <div className="w-75 flex flex-col justify-between">
-              <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                    How It Works
-                  </div>
-                </div>
-                <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
-                  Guided Steps{" "}
-                  <span className="font-playfair-display italic">
-                    Toward Better Mental Health
-                  </span>
-                </h2>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                  Free Consultation
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="w-100 bg-gray-400 rounded-2xl"></div>
-            <div className="w-121 space-y-12">
-              <div className="flex items-start gap-3">
-                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
-                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
-                </div>
-                <div className="space-y-3">
-                  <div className="font-semibold text-[22px] leading-120">
-                    Initial{" "}
-                    <span className="font-playfair-display italic">
-                      Consultation
-                    </span>
-                  </div>
-                  <p className="text-base leading-150 text-[#51575C]">
-                    Fill out a brief form to tell us about your needs, goals, &
-                    serey has taken possession of my entire soul, like
-                    preferences.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
-                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
-                </div>
-                <div className="space-y-3">
-                  <div className="font-semibold text-[22px] leading-120">
-                    Therapist{" "}
-                    <span className="font-playfair-display italic">
-                      Matching
-                    </span>
-                  </div>
-                  <p className="text-base leading-150 text-[#51575C]">
-                    Get matched with the right therapist based on your issueshas
-                    ins taken possession of my entire soul like.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
-                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
-                </div>
-                <div className="space-y-3">
-                  <div className="font-semibold text-[22px] leading-120">
-                    Book a{" "}
-                    <span className="font-playfair-display italic">
-                      Session
-                    </span>
-                  </div>
-                  <p className="text-base leading-150 text-[#51575C]">
-                    Choose a convenient time for your first online or in-person
-                    as taken possession of my entire, like session.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
-                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
-                </div>
-                <div className="space-y-3">
-                  <div className="font-semibold text-[22px] leading-120">
-                    Begin Your{" "}
-                    <span className="font-playfair-display italic">
-                      Healing
-                    </span>
-                  </div>
-                  <p className="text-base leading-150 text-[#51575C]">
-                    Start your therapy journey with support, clarity, and
-                    serenity is taken soul, like personalized care from day one.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19 px-3">
-        <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div className="flex justify-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-white rounded-full" />
-                  <div className="text-sm text-white leading-150 tracking-[8%] font-medium uppercase">
-                    Start Today
-                  </div>
-                </div>
-              </div>
-              <h2 className="text-center text-white text-[48px] font-semibold leading-120 tracking-[-3%]">
-                Take the First Step
-                <br />
-                <span className="font-playfair-display italic">
-                  Toward Mental Wellness
-                </span>
-              </h2>
-              <p className="text-center text-base leading-150 text-white">
-                Your healing journey starts now connect with a trusted
-                therapist.
-              </p>
-            </div>
-            <div className="flex items-center justify-center gap-6">
-              <div className="bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5">
-                Get Started
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-black"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </div>
-              <div className="border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                Contact Us
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-white"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19">
-        <div className="container mx-auto">
-          <div className="space-y-20">
-            <div className="flex items-stretch justify-between gap-12">
-              <div className="w-92 flex flex-col justify-between">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                      Client Stories
-                    </div>
-                  </div>
-                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
-                    What Our Clients{" "}
-                    <span className="font-playfair-display italic">
-                      Say About Us
-                    </span>
-                  </h2>
-                </div>
-                <div className="space-y-5">
                   <div className="flex items-center">
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                    <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <div className="text-2xl leading-150 font-semibold">
-                      780k<span className="text-primary">+</span> Customer
-                    </div>
-                    <div className="text-sm leading-150 text-[#51575C]">
-                      Satisfied with our services
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-191 space-y-6">
-                <div className="p-6 bg-[#E3EEED] rounded-xl">
-                  <div className="flex items-stretch justify-between gap-8">
-                    <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
-                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                        <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="text-white"
-                          >
-                            <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
-                          </svg>
-                          Play Video
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div className="space-y-6">
-                        <div className="flex items-center gap-1">
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                        <p className="text-base leading-150 text-[#51575C]">
-                          "I used to feel completely lost and overwhelmed. hasti
-                          Thanks to my therapist at Mindora, I’ve found clarity,
-                          confidence, and a new sense of peace. The sessions
-                          felt safe, personal, and deeply healing."
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <div className="font-medium text-lg leading-150">
-                            Brandon John
-                          </div>
-                          <div className="text-primary text-base leading-150">
-                            CEO, TeamTalk
-                          </div>
-                        </div>
-                        <Image
-                          src="/quote.png"
-                          alt="quote icon"
-                          width={41}
-                          height={33}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6 bg-[#E3EEED] rounded-xl">
-                  <div className="flex items-stretch justify-between gap-8">
-                    <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
-                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                        <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="text-white"
-                          >
-                            <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
-                          </svg>
-                          Play Video
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div className="space-y-6">
-                        <div className="flex items-center gap-1">
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                          <Image
-                            src="/star.png"
-                            alt="star"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                        <p className="text-base leading-150 text-[#51575C]">
-                          "I never thought therapy would make such a big on isil
-                          my life. Mindora helped me manage anxiety and
-                          understand myself better. My therapist was patient,
-                          kind, and truly listened to me every session."
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <div className="font-medium text-lg leading-150">
-                            Julia Tandra
-                          </div>
-                          <div className="text-primary text-base leading-150">
-                            CEO, Arktico
-                          </div>
-                        </div>
-                        <Image
-                          src="/quote.png"
-                          alt="quote icon"
-                          width={41}
-                          height={33}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-12">
-              <div className="flex justify-center">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                    Our Partner
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-6">
-                <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
-                  <Image
-                    src="/company-logo.png"
-                    alt="company logo"
-                    width={156}
-                    height={40}
-                  />
-                </div>
-                <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
-                  <Image
-                    src="/company-logo.png"
-                    alt="company logo"
-                    width={156}
-                    height={40}
-                  />
-                </div>
-                <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
-                  <Image
-                    src="/company-logo.png"
-                    alt="company logo"
-                    width={156}
-                    height={40}
-                  />
-                </div>
-                <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
-                  <Image
-                    src="/company-logo.png"
-                    alt="company logo"
-                    width={156}
-                    height={40}
-                  />
-                </div>
-                <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
-                  <Image
-                    src="/company-logo.png"
-                    alt="company logo"
-                    width={156}
-                    height={40}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-19 px-3">
-        <div className="rounded-2xl bg-[#E3EEEE] py-38">
-          <div className="container mx-auto">
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <div className="flex items-center justify-center">
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                      Our Team
-                    </div>
-                  </div>
-                </div>
-                <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
-                  Meet the Therapists
-                  <br />
-                  <span className="font-playfair-display italic">
-                    Behind Your Healing
-                  </span>
-                </h2>
-              </div>
-              <div className="grid grid-cols-4 gap-6">
-                <div className="space-y-4">
-                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
-                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
-                    <div className="space-y-1">
-                      <div className="font-semibold text-[22px] leading-120">
-                        Dr. Clara{" "}
-                        <span className="font-playfair-display italic">
-                          Jensen
-                        </span>
-                      </div>
-                      <p className="text-base leading-150 text-[#0B504F]">
-                        Clinical Psychologist
-                      </p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                    <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                      View All Services
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="1"
+                        strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className="text-white"
@@ -890,196 +260,169 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4 mt-6">
-                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
-                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
-                    <div className="space-y-1">
-                      <div className="font-semibold text-[22px] leading-120">
-                        Michael,{" "}
-                        <span className="font-playfair-display italic">
-                          M.Psi
-                        </span>
+                <div className="w-1/2 relative">
+                  <div className="absolute top-0 left-0 z-10 w-full h-full">
+                    <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
+                  </div>
+                  <div className="absolute top-6 left-0 z-20 w-full h-[calc(100%-1.5rem)]">
+                    <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 z-30">
+                    <div className="bg-white rounded-xl border border-[#EEF2F5] p-6">
+                      <div className="space-y-8">
+                        <div className="flex items-center justify-between">
+                          <div className="w-16 h-16 rounded-full bg-gray-300" />
+                          <div className="space-y-0">
+                            <div className="text-sm leading-150 tracking-[8%] text-[#51575C] font-medium uppercase">
+                              Start From
+                            </div>
+                            <div className="flex items-end gap-1">
+                              <div className="font-semibold text-[22px] leading-120">
+                                $185
+                              </div>
+                              <div className="font-playfair-display text-sm italic leading-120">
+                                /Session
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="space-y-3">
+                            <div className="font-semibold text-[22px] text-[#0F7676] leading-120">
+                              Family{" "}
+                              <span className="font-playfair-display italic">
+                                Therapy
+                              </span>
+                            </div>
+                            <p className="text-base leading-150 text-[#51575C]">
+                              Build healthier family dynamics and address
+                              collective issues mental through collaborative,
+                              guided sessions.
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                              Group Healing
+                            </div>
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                              Behavioral Guidance
+                            </div>
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                              Stronger Bonds
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-base leading-150 text-[#0B504F]">
-                        Licensed Therapist
-                      </p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-primary -rotate-45"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
                     </div>
                   </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
-                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
-                    <div className="space-y-1">
-                      <div className="font-semibold text-[22px] leading-120">
-                        Soflea,{" "}
-                        <span className="font-playfair-display italic">
-                          Ph.D.
-                        </span>
-                      </div>
-                      <p className="text-base leading-150 text-[#0B504F]">
-                        Family Therapist
-                      </p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-primary -rotate-45"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4 mt-6">
-                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
-                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
-                    <div className="space-y-1">
-                      <div className="font-semibold text-[22px] leading-120">
-                        Lucas{" "}
-                        <span className="font-playfair-display italic">
-                          Ainsley
-                        </span>
-                      </div>
-                      <p className="text-base leading-150 text-[#0B504F]">
-                        Online Therapy
-                      </p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-primary -rotate-45"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                  View All Therapist
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="py-19">
-        <div className="container mx-auto">
-          <div className="flex items-stretch gap-16">
-            <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
-              <div className="rounded-xl bg-gray-400 h-105.5" />
-              <div className="space-y-3">
-                <div className="font-semibold text-[22px] leading-120">
-                  Have more{" "}
-                  <span className="font-playfair-display italic">
-                    any questions?
-                  </span>
-                </div>
-                <p className="text-base leading-150 text-[#51575C]">
-                  One morning, when Gregor Samsa woke will from troubled dreams,
-                  he found il himself brown geting questions your.
-                </p>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                  Free Consultations
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col justify-between">
+        </section>
+        <section className="py-19">
+          <div className="container mx-auto">
+            <div className="space-y-12">
               <div className="space-y-6">
-                <div className="flex items-center">
+                <div className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                     <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                      Need Help
+                      Why Choose Us
                     </div>
                   </div>
                 </div>
-                <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
-                  Get Clear Answers Common Their
+                <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  Trusted Mental Health Support
                   <br />
                   <span className="font-playfair-display italic">
-                    Mental Health Questions
+                    That Empowers You
                   </span>
                 </h2>
               </div>
-              <div className="space-y-4">
-                <div className="p-6 bg-primary rounded-lg space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="font-semibold text-white text-[22px] leading-120">
-                      What is therapy, and how does it help?
+              <div className="space-y-0">
+                <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center">
+                  <div className="h-24 w-24 rounded-full bg-white flex items-center justify-center">
+                    <Image
+                      src="/play.png"
+                      alt="play"
+                      width={24}
+                      height={31}
+                      className="ml-2"
+                    />
+                  </div>
+                </div>
+                <div className="flex justify-center -mt-24">
+                  <div className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6">
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                      <div className="font-semibold text-[22px] leading-120">
+                        👩‍⚕️ Licensed{" "}
+                        <span className="font-playfair-display italic">
+                          Therapists
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#51575C]">
+                        All our professionals are certifiedd offi experienced,
+                        deeply committ to ethical, mentaly personalized.
+                      </p>
                     </div>
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                      <div className="font-semibold text-[22px] leading-120">
+                        🔒 Confidential{" "}
+                        <span className="font-playfair-display italic">
+                          & Save
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#51575C]">
+                        Your privacy is our top priority. Every hass session is
+                        fully secure and judgment-its freel, mentaly
+                        personalized.
+                      </p>
+                    </div>
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                      <div className="font-semibold text-[22px] leading-120">
+                        💬 Flexible{" "}
+                        <span className="font-playfair-display italic">
+                          & Accessible
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#51575C]">
+                        Online or in-person sessions available to suit your
+                        schedule — anytime, this ilearn anywhere, mentaly
+                        personalized.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-19">
+          <div className="container mx-auto">
+            <div className="flex items-stretch gap-12">
+              <div className="w-75 flex flex-col justify-between">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                      How It Works
+                    </div>
+                  </div>
+                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                    Guided Steps{" "}
+                    <span className="font-playfair-display italic">
+                      Toward Better Mental Health
+                    </span>
+                  </h2>
+                </div>
+                <div className="flex items-center">
+                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                    Free Consultation
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -1089,268 +432,132 @@ export default function Home() {
                       className="text-white"
                     >
                       <path d="M5 12h14" />
-                    </svg>
-                  </div>
-                  <p className="text-white text-base leading-150 font-medium">
-                    Therapy is a safe, supportive space to explore emotions,
-                    challenges, and goals with a lets si trained professional to
-                    improve mental well-being.
-                  </p>
-                </div>
-                <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div className="font-semibold text-[22px] leading-120">
-                      Is online therapy as effective as in-person sessions?
-                    </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-black"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
+                      <path d="m12 5 7 7-7 7" />
                     </svg>
                   </div>
                 </div>
-                <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                  <div className="flex items-center justify-between">
+              </div>
+              <div className="w-100 bg-gray-400 rounded-2xl"></div>
+              <div className="w-121 space-y-12">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                    <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                  </div>
+                  <div className="space-y-3">
                     <div className="font-semibold text-[22px] leading-120">
-                      What issues do your therapists specialize in?
+                      Initial{" "}
+                      <span className="font-playfair-display italic">
+                        Consultation
+                      </span>
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-black"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
-                    </svg>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Fill out a brief form to tell us about your needs, goals,
+                      & serey has taken possession of my entire soul, like
+                      preferences.
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                  <div className="flex items-center justify-between">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                    <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                  </div>
+                  <div className="space-y-3">
                     <div className="font-semibold text-[22px] leading-120">
-                      How do I choose the right therapist?
+                      Therapist{" "}
+                      <span className="font-playfair-display italic">
+                        Matching
+                      </span>
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-black"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
-                    </svg>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Get matched with the right therapist based on your
+                      issueshas ins taken possession of my entire soul like.
+                    </p>
                   </div>
                 </div>
-                <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                  <div className="flex items-center justify-between">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                    <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                  </div>
+                  <div className="space-y-3">
                     <div className="font-semibold text-[22px] leading-120">
-                      How do I book my first session?
+                      Book a{" "}
+                      <span className="font-playfair-display italic">
+                        Session
+                      </span>
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-black"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
-                    </svg>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Choose a convenient time for your first online or
+                      in-person as taken possession of my entire, like session.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                    <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                  </div>
+                  <div className="space-y-3">
+                    <div className="font-semibold text-[22px] leading-120">
+                      Begin Your{" "}
+                      <span className="font-playfair-display italic">
+                        Healing
+                      </span>
+                    </div>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Start your therapy journey with support, clarity, and
+                      serenity is taken soul, like personalized care from day
+                      one.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="pt-19 pb-38">
-        <div className="container mx-auto">
-          <div className="flex items-stretch gap-38">
-            <div className="w-125.5">
-              <div className="space-y-20">
-                <div className="space-y-12">
-                  <div className="space-y-6">
-                    <div className="flex items-center">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                          Book Now
-                        </div>
-                      </div>
-                    </div>
-                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
-                      Schedule Your Therapy
-                      <br />
-                      <span className="font-playfair-display italic">
-                        in Minutes Easily Online
-                      </span>
-                    </h2>
-                    <p className="text-base leading-150 text-[#51575C]">
-                      Fill out the form below to get matched with a therapist
-                      and choose a time that fits your needs and schedule.
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-16">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="26"
-                          height="26"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="text-white"
-                        >
-                          <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-                        </svg>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                          Call Us
-                        </div>
-                        <div className="text-lg leading-110 font-semibold">
-                          +1 (555) 123-4567
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="26"
-                          height="26"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="text-white"
-                        >
-                          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                          <rect x="2" y="4" width="20" height="16" rx="2" />
-                        </svg>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
-                          Mail Us
-                        </div>
-                        <div className="text-lg leading-110 font-semibold">
-                          hello@mindera.com
-                        </div>
-                      </div>
+        </section>
+        <section className="py-19 px-3">
+          <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                    <div className="text-sm text-white leading-150 tracking-[8%] font-medium uppercase">
+                      Start Today
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
-                  <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
-                </div>
+                <h2 className="text-center text-white text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  Take the First Step
+                  <br />
+                  <span className="font-playfair-display italic">
+                    Toward Mental Wellness
+                  </span>
+                </h2>
+                <p className="text-center text-base leading-150 text-white">
+                  Your healing journey starts now connect with a trusted
+                  therapist.
+                </p>
               </div>
-            </div>
-            <div className="flex-1 flex flex-col justify-between">
-              <div className="space-y-8">
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      First Name
-                    </div>
-                    <input
-                      placeholder="e.g Jonyu"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      Last Name
-                    </div>
-                    <input
-                      placeholder="e.g Branstorm"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      Email
-                    </div>
-                    <input
-                      placeholder="e.g hello@advenza.com"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      Phone
-                    </div>
-                    <input
-                      placeholder="e.g (+62) 8123 4567 8900"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      Services
-                    </div>
-                    <input
-                      placeholder="e.g Individual Therapy"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                      Date
-                    </div>
-                    <input
-                      placeholder="Date"
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                    />
-                  </div>
+              <div className="flex items-center justify-center gap-6">
+                <div className="bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5">
+                  Get Started
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-black"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
                 </div>
-                <div className="space-y-4">
-                  <div className="text-sm leading-120 tracking-[-3%] font-medium">
-                    Message
-                  </div>
-                  <textarea
-                    rows={7}
-                    placeholder="Write your message here..."
-                    className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
-                  />
-                </div>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
-                  Book My Session
+                <div className="border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  Contact Us
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
@@ -1370,8 +577,987 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+        <section className="py-19">
+          <div className="container mx-auto">
+            <div className="space-y-20">
+              <div className="flex items-stretch justify-between gap-12">
+                <div className="w-92 flex flex-col justify-between">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                        Client Stories
+                      </div>
+                    </div>
+                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                      What Our Clients{" "}
+                      <span className="font-playfair-display italic">
+                        Say About Us
+                      </span>
+                    </h2>
+                  </div>
+                  <div className="space-y-5">
+                    <div className="flex items-center">
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                    </div>
+                    <div className="space-y-0.5">
+                      <div className="text-2xl leading-150 font-semibold">
+                        780k<span className="text-primary">+</span> Customer
+                      </div>
+                      <div className="text-sm leading-150 text-[#51575C]">
+                        Satisfied with our services
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-191 space-y-6">
+                  <div className="p-6 bg-[#E3EEED] rounded-xl">
+                    <div className="flex items-stretch justify-between gap-8">
+                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="text-white"
+                            >
+                              <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+                            </svg>
+                            Play Video
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div className="space-y-6">
+                          <div className="flex items-center gap-1">
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+                          <p className="text-base leading-150 text-[#51575C]">
+                            "I used to feel completely lost and overwhelmed.
+                            hasti Thanks to my therapist at Mindora, I’ve found
+                            clarity, confidence, and a new sense of peace. The
+                            sessions felt safe, personal, and deeply healing."
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-1">
+                            <div className="font-medium text-lg leading-150">
+                              Brandon John
+                            </div>
+                            <div className="text-primary text-base leading-150">
+                              CEO, TeamTalk
+                            </div>
+                          </div>
+                          <Image
+                            src="/quote.png"
+                            alt="quote icon"
+                            width={41}
+                            height={33}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-[#E3EEED] rounded-xl">
+                    <div className="flex items-stretch justify-between gap-8">
+                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="text-white"
+                            >
+                              <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
+                            </svg>
+                            Play Video
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div className="space-y-6">
+                          <div className="flex items-center gap-1">
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                            <Image
+                              src="/star.png"
+                              alt="star"
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+                          <p className="text-base leading-150 text-[#51575C]">
+                            "I never thought therapy would make such a big on
+                            isil my life. Mindora helped me manage anxiety and
+                            understand myself better. My therapist was patient,
+                            kind, and truly listened to me every session."
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-1">
+                            <div className="font-medium text-lg leading-150">
+                              Julia Tandra
+                            </div>
+                            <div className="text-primary text-base leading-150">
+                              CEO, Arktico
+                            </div>
+                          </div>
+                          <Image
+                            src="/quote.png"
+                            alt="quote icon"
+                            width={41}
+                            height={33}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-12">
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                      Our Partner
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center gap-6">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                    <Image
+                      src="/company-logo.png"
+                      alt="company logo"
+                      width={156}
+                      height={40}
+                    />
+                  </div>
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                    <Image
+                      src="/company-logo.png"
+                      alt="company logo"
+                      width={156}
+                      height={40}
+                    />
+                  </div>
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                    <Image
+                      src="/company-logo.png"
+                      alt="company logo"
+                      width={156}
+                      height={40}
+                    />
+                  </div>
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                    <Image
+                      src="/company-logo.png"
+                      alt="company logo"
+                      width={156}
+                      height={40}
+                    />
+                  </div>
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                    <Image
+                      src="/company-logo.png"
+                      alt="company logo"
+                      width={156}
+                      height={40}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-19 px-3">
+          <div className="rounded-2xl bg-[#E3EEEE] py-38">
+            <div className="container mx-auto">
+              <div className="space-y-12">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-center">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                        Our Team
+                      </div>
+                    </div>
+                  </div>
+                  <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                    Meet the Therapists
+                    <br />
+                    <span className="font-playfair-display italic">
+                      Behind Your Healing
+                    </span>
+                  </h2>
+                </div>
+                <div className="grid grid-cols-4 gap-6">
+                  <div className="space-y-4">
+                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                      <div className="space-y-1">
+                        <div className="font-semibold text-[22px] leading-120">
+                          Dr. Clara{" "}
+                          <span className="font-playfair-display italic">
+                            Jensen
+                          </span>
+                        </div>
+                        <p className="text-base leading-150 text-[#0B504F]">
+                          Clinical Psychologist
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 mt-6">
+                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                      <div className="space-y-1">
+                        <div className="font-semibold text-[22px] leading-120">
+                          Michael,{" "}
+                          <span className="font-playfair-display italic">
+                            M.Psi
+                          </span>
+                        </div>
+                        <p className="text-base leading-150 text-[#0B504F]">
+                          Licensed Therapist
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-primary -rotate-45"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                      <div className="space-y-1">
+                        <div className="font-semibold text-[22px] leading-120">
+                          Soflea,{" "}
+                          <span className="font-playfair-display italic">
+                            Ph.D.
+                          </span>
+                        </div>
+                        <p className="text-base leading-150 text-[#0B504F]">
+                          Family Therapist
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-primary -rotate-45"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 mt-6">
+                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                      <div className="space-y-1">
+                        <div className="font-semibold text-[22px] leading-120">
+                          Lucas{" "}
+                          <span className="font-playfair-display italic">
+                            Ainsley
+                          </span>
+                        </div>
+                        <p className="text-base leading-150 text-[#0B504F]">
+                          Online Therapy
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-primary -rotate-45"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                    View All Therapist
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-19">
+          <div className="container mx-auto">
+            <div className="flex items-stretch gap-16">
+              <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
+                <div className="rounded-xl bg-gray-400 h-105.5" />
+                <div className="space-y-3">
+                  <div className="font-semibold text-[22px] leading-120">
+                    Have more{" "}
+                    <span className="font-playfair-display italic">
+                      any questions?
+                    </span>
+                  </div>
+                  <p className="text-base leading-150 text-[#51575C]">
+                    One morning, when Gregor Samsa woke will from troubled
+                    dreams, he found il himself brown geting questions your.
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                    Free Consultations
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col justify-between">
+                <div className="space-y-6">
+                  <div className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                        Need Help
+                      </div>
+                    </div>
+                  </div>
+                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                    Get Clear Answers Common Their
+                    <br />
+                    <span className="font-playfair-display italic">
+                      Mental Health Questions
+                    </span>
+                  </h2>
+                </div>
+                <div className="space-y-4">
+                  <div className="p-6 bg-primary rounded-lg space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-white text-[22px] leading-120">
+                        What is therapy, and how does it help?
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white"
+                      >
+                        <path d="M5 12h14" />
+                      </svg>
+                    </div>
+                    <p className="text-white text-base leading-150 font-medium">
+                      Therapy is a safe, supportive space to explore emotions,
+                      challenges, and goals with a lets si trained professional
+                      to improve mental well-being.
+                    </p>
+                  </div>
+                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-[22px] leading-120">
+                        Is online therapy as effective as in-person sessions?
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-black"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-[22px] leading-120">
+                        What issues do your therapists specialize in?
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-black"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-[22px] leading-120">
+                        How do I choose the right therapist?
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-black"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="font-semibold text-[22px] leading-120">
+                        How do I book my first session?
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-black"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="pt-19 pb-38">
+          <div className="container mx-auto">
+            <div className="flex items-stretch gap-38">
+              <div className="w-125.5">
+                <div className="space-y-20">
+                  <div className="space-y-12">
+                    <div className="space-y-6">
+                      <div className="flex items-center">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                          <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                            Book Now
+                          </div>
+                        </div>
+                      </div>
+                      <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                        Schedule Your Therapy
+                        <br />
+                        <span className="font-playfair-display italic">
+                          in Minutes Easily Online
+                        </span>
+                      </h2>
+                      <p className="text-base leading-150 text-[#51575C]">
+                        Fill out the form below to get matched with a therapist
+                        and choose a time that fits your needs and schedule.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-16">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-white"
+                          >
+                            <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                          </svg>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                            Call Us
+                          </div>
+                          <div className="text-lg leading-110 font-semibold">
+                            +1 (555) 123-4567
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-white"
+                          >
+                            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                          </svg>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                            Mail Us
+                          </div>
+                          <div className="text-lg leading-110 font-semibold">
+                            hello@mindera.com
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col justify-between">
+                <div className="space-y-8">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        First Name
+                      </div>
+                      <input
+                        placeholder="e.g Jonyu"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        Last Name
+                      </div>
+                      <input
+                        placeholder="e.g Branstorm"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        Email
+                      </div>
+                      <input
+                        placeholder="e.g hello@advenza.com"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        Phone
+                      </div>
+                      <input
+                        placeholder="e.g (+62) 8123 4567 8900"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        Services
+                      </div>
+                      <input
+                        placeholder="e.g Individual Therapy"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                        Date
+                      </div>
+                      <input
+                        placeholder="Date"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Message
+                    </div>
+                    <textarea
+                      rows={7}
+                      placeholder="Write your message here..."
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                    Book My Session
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="px-3 pb-3">
+        <div className="bg-black rounded-2xl">
+          <div className="container mx-auto">
+            <div className="py-38 space-y-20">
+              <div className="flex items-center justify-between">
+                <div className="w-186 p-6 rounded-xl bg-primary">
+                  <div className="flex items-center gap-8">
+                    <div className="h-43 w-70 bg-gray-400 rounded-lg"></div>
+                    <div className="flex-1 space-y-8">
+                      <h3 className="text-[32px] text-white leading-150 font-semibold">
+                        Subscribe our{" "}
+                        <span className="font-playfair-display italic">
+                          newsletter
+                        </span>
+                      </h3>
+                      <div className="border-b border-white pb-4 flex items-center justify-between">
+                        <input
+                          placeholder="Your email here ..."
+                          className="text-white outline-none w-full text-sm placeholder:text-white"
+                        />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white"
+                        >
+                          <path d="M18 8L22 12L18 16" />
+                          <path d="M2 12H22" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-85 space-y-6">
+                  <div className="text-5xl leading-120 tracking-[-3%] font-semibold text-white">
+                    Mind
+                    <span className="font-playfair-display italic">era</span>
+                  </div>
+                  <p className="text-base leading-150 text-[#D8D8D8]">
+                    At Mindora, we believe mental wellness is a vital part of a
+                    good fulfilling life. Our therapists provide personalized,
+                    empathetic.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start justify-between">
+                <div className="space-y-4 w-27">
+                  <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
+                    Company
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-base text-white leading-150">
+                      About Us
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Career
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Our Approach
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Case Studies
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 w-48">
+                  <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
+                    Services
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-base text-white leading-150">
+                      Individual Therapy
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Family Therapy
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Couples Counseling
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Depression Treatment
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 w-27">
+                  <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
+                    Resources
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-base text-white leading-150">
+                      Blog / Articles
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      Detail Guides
+                    </div>
+                    <div className="text-base text-white leading-150">FAQs</div>
+                    <div className="text-base text-white leading-150">
+                      Help Center
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 w-68">
+                  <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
+                    Social Media
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="text-base text-white leading-150">
+                        Instagram
+                      </div>
+                      <div className="text-base text-white leading-150">
+                        Twitter
+                      </div>
+                      <div className="text-base text-white leading-150">
+                        Tiktok
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-base text-white leading-150">
+                        Facebook
+                      </div>
+                      <div className="text-base text-white leading-150">
+                        Linkedin
+                      </div>
+                      <div className="text-base text-white leading-150">
+                        Youtube
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 w-37">
+                  <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
+                    Contact Info
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-base text-white leading-150">
+                      hello@mindera.com
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      123 Growth Street, San Francisco, CA
+                    </div>
+                    <div className="text-base text-white leading-150">
+                      +1 (800) 123-4567
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="py-8 border-t border-[#575654] flex items-center justify-between">
+              <div className="text-sm leading-150 text-white/90">
+                © 2025 All Right Reserved by Mindera.
+              </div>
+              <div className="text-base leading-120 text-white p-2 border border-white rounded-full flex items-center gap-3">
+                <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="m5 12 7-7 7 7" />
+                    <path d="M12 19V5" />
+                  </svg>
+                </div>
+                Back To Top
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+      </footer>
+    </>
   );
 }
