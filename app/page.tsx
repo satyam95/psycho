@@ -510,6 +510,71 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19 px-3">
+        <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <div className="flex justify-center">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                  <div className="text-sm text-white leading-150 tracking-[8%] font-medium uppercase">
+                    Start Today
+                  </div>
+                </div>
+              </div>
+              <h2 className="text-center text-white text-[48px] font-semibold leading-120 tracking-[-3%]">
+                Take the First Step
+                <br />
+                <span className="font-playfair-display italic">
+                  Toward Mental Wellness
+                </span>
+              </h2>
+              <p className="text-center text-base leading-150 text-white">
+                Your healing journey starts now connect with a trusted
+                therapist.
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-6">
+              <div className="bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-black"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+              <div className="border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                Contact Us
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
