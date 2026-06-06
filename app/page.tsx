@@ -835,6 +835,185 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19 px-3">
+        <div className="rounded-2xl bg-[#E3EEEE] py-38">
+          <div className="container mx-auto">
+            <div className="space-y-12">
+              <div className="space-y-6">
+                <div className="flex items-center justify-center">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                      Our Team
+                    </div>
+                  </div>
+                </div>
+                <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  Meet the Therapists
+                  <br />
+                  <span className="font-playfair-display italic">
+                    Behind Your Healing
+                  </span>
+                </h2>
+              </div>
+              <div className="grid grid-cols-4 gap-6">
+                <div className="space-y-4">
+                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="font-semibold text-[22px] leading-120">
+                        Dr. Clara{" "}
+                        <span className="font-playfair-display italic">
+                          Jensen
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#0B504F]">
+                        Clinical Psychologist
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-6">
+                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="font-semibold text-[22px] leading-120">
+                        Michael,{" "}
+                        <span className="font-playfair-display italic">
+                          M.Psi
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#0B504F]">
+                        Licensed Therapist
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-primary -rotate-45"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="font-semibold text-[22px] leading-120">
+                        Soflea,{" "}
+                        <span className="font-playfair-display italic">
+                          Ph.D.
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#0B504F]">
+                        Family Therapist
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-primary -rotate-45"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-6">
+                  <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                  <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="font-semibold text-[22px] leading-120">
+                        Lucas{" "}
+                        <span className="font-playfair-display italic">
+                          Ainsley
+                        </span>
+                      </div>
+                      <p className="text-base leading-150 text-[#0B504F]">
+                        Online Therapy
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-primary -rotate-45"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  View All Therapist
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
