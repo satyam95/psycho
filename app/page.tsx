@@ -396,6 +396,120 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19">
+        <div className="container mx-auto">
+          <div className="flex items-stretch gap-12">
+            <div className="w-75 flex flex-col justify-between">
+              <div className="space-y-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                  <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                    How It Works
+                  </div>
+                </div>
+                <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  Guided Steps{" "}
+                  <span className="font-playfair-display italic">
+                    Toward Better Mental Health
+                  </span>
+                </h2>
+              </div>
+              <div className="flex items-center">
+                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  Free Consultation
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="w-100 bg-gray-400 rounded-2xl"></div>
+            <div className="w-121 space-y-12">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                </div>
+                <div className="space-y-3">
+                  <div className="font-semibold text-[22px] leading-120">
+                    Initial{" "}
+                    <span className="font-playfair-display italic">
+                      Consultation
+                    </span>
+                  </div>
+                  <p className="text-base leading-150 text-[#51575C]">
+                    Fill out a brief form to tell us about your needs, goals, &
+                    serey has taken possession of my entire soul, like
+                    preferences.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                </div>
+                <div className="space-y-3">
+                  <div className="font-semibold text-[22px] leading-120">
+                    Therapist{" "}
+                    <span className="font-playfair-display italic">
+                      Matching
+                    </span>
+                  </div>
+                  <p className="text-base leading-150 text-[#51575C]">
+                    Get matched with the right therapist based on your issueshas
+                    ins taken possession of my entire soul like.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                </div>
+                <div className="space-y-3">
+                  <div className="font-semibold text-[22px] leading-120">
+                    Book a{" "}
+                    <span className="font-playfair-display italic">
+                      Session
+                    </span>
+                  </div>
+                  <p className="text-base leading-150 text-[#51575C]">
+                    Choose a convenient time for your first online or in-person
+                    as taken possession of my entire, like session.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
+                  <div className="min-w-3 min-h-3 rounded-full bg-primary" />
+                </div>
+                <div className="space-y-3">
+                  <div className="font-semibold text-[22px] leading-120">
+                    Begin Your{" "}
+                    <span className="font-playfair-display italic">
+                      Healing
+                    </span>
+                  </div>
+                  <p className="text-base leading-150 text-[#51575C]">
+                    Start your therapy journey with support, clarity, and
+                    serenity is taken soul, like personalized care from day one.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
