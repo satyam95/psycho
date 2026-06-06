@@ -1014,6 +1014,182 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-19">
+        <div className="container mx-auto">
+          <div className="flex items-stretch gap-16">
+            <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
+              <div className="rounded-xl bg-gray-400 h-105.5" />
+              <div className="space-y-3">
+                <div className="font-semibold text-[22px] leading-120">
+                  Have more{" "}
+                  <span className="font-playfair-display italic">
+                    any questions?
+                  </span>
+                </div>
+                <p className="text-base leading-150 text-[#51575C]">
+                  One morning, when Gregor Samsa woke will from troubled dreams,
+                  he found il himself brown geting questions your.
+                </p>
+              </div>
+              <div className="flex items-center">
+                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  Free Consultations
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col justify-between">
+              <div className="space-y-6">
+                <div className="flex items-center">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                    <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                      Need Help
+                    </div>
+                  </div>
+                </div>
+                <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  Get Clear Answers Common Their
+                  <br />
+                  <span className="font-playfair-display italic">
+                    Mental Health Questions
+                  </span>
+                </h2>
+              </div>
+              <div className="space-y-4">
+                <div className="p-6 bg-primary rounded-lg space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-white text-[22px] leading-120">
+                      What is therapy, and how does it help?
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white"
+                    >
+                      <path d="M5 12h14" />
+                    </svg>
+                  </div>
+                  <p className="text-white text-base leading-150 font-medium">
+                    Therapy is a safe, supportive space to explore emotions,
+                    challenges, and goals with a lets si trained professional to
+                    improve mental well-being.
+                  </p>
+                </div>
+                <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-[22px] leading-120">
+                      Is online therapy as effective as in-person sessions?
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-black"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="M12 5v14" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-[22px] leading-120">
+                      What issues do your therapists specialize in?
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-black"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="M12 5v14" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-[22px] leading-120">
+                      How do I choose the right therapist?
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-black"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="M12 5v14" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="p-6 bg-[#F6F6F6] rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-[22px] leading-120">
+                      How do I book my first session?
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-black"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="M12 5v14" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
