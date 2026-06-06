@@ -1190,6 +1190,188 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="pt-19 pb-38">
+        <div className="container mx-auto">
+          <div className="flex items-stretch gap-38">
+            <div className="w-125.5">
+              <div className="space-y-20">
+                <div className="space-y-12">
+                  <div className="space-y-6">
+                    <div className="flex items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                          Book Now
+                        </div>
+                      </div>
+                    </div>
+                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                      Schedule Your Therapy
+                      <br />
+                      <span className="font-playfair-display italic">
+                        in Minutes Easily Online
+                      </span>
+                    </h2>
+                    <p className="text-base leading-150 text-[#51575C]">
+                      Fill out the form below to get matched with a therapist
+                      and choose a time that fits your needs and schedule.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-16">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white"
+                        >
+                          <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                        </svg>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                          Call Us
+                        </div>
+                        <div className="text-lg leading-110 font-semibold">
+                          +1 (555) 123-4567
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white"
+                        >
+                          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                          <rect x="2" y="4" width="20" height="16" rx="2" />
+                        </svg>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
+                          Mail Us
+                        </div>
+                        <div className="text-lg leading-110 font-semibold">
+                          hello@mindera.com
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
+                  <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col justify-between">
+              <div className="space-y-8">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      First Name
+                    </div>
+                    <input
+                      placeholder="e.g Jonyu"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Last Name
+                    </div>
+                    <input
+                      placeholder="e.g Branstorm"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Email
+                    </div>
+                    <input
+                      placeholder="e.g hello@advenza.com"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Phone
+                    </div>
+                    <input
+                      placeholder="e.g (+62) 8123 4567 8900"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Services
+                    </div>
+                    <input
+                      placeholder="e.g Individual Therapy"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                      Date
+                    </div>
+                    <input
+                      placeholder="Date"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="text-sm leading-120 tracking-[-3%] font-medium">
+                    Message
+                  </div>
+                  <textarea
+                    rows={7}
+                    placeholder="Write your message here..."
+                    className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  Book My Session
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
