@@ -1,10 +1,32 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const navItems = ["Home", "Services", "About", "Projects", "Contact"];
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="absolute top-0 left-0 w-full z-50">
-        <div className="container mx-auto py-10">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+          ? "bg-white/80 backdrop-blur-xl shadow-sm"
+          : "bg-transparent"
+          }`}
+      >
+        <div className="container mx-auto py-5 px-4 xl:px-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-20">
               <div className="text-[26px] leading-120 tracking-[-3%] font-semibold">
@@ -12,15 +34,9 @@ export default function Home() {
                 <span className="font-playfair-display italic">era</span>
               </div>
               <div className="flex items-center gap-8">
-                <div className="text-base leading-120 font-medium">Home</div>
-                <div className="text-base leading-120 font-medium">
-                  Services
-                </div>
-                <div className="text-base leading-120 font-medium">About</div>
-                <div className="text-base leading-120 font-medium">
-                  Projects
-                </div>
-                <div className="text-base leading-120 font-medium">Contact</div>
+                {navItems.map((item) => (
+                  <div className="text-base leading-120 font-medium" key={item}>{item}</div>
+                ))}
               </div>
             </div>
             <div className="flex items-center gap-6">
