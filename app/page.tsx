@@ -129,10 +129,33 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center">
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]">
+                        <Image
+                          src="/images/avatar_1.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                        <Image
+                          src="/images/avatar_2.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                        <Image
+                          src="/images/avatar_3.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center gap-1.5">
@@ -153,7 +176,14 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="relative w-[45%] h-195 bg-gray-400 rounded-2xl">
+              <div className="relative overflow-hidden w-[45%] h-195 bg-gray-400 rounded-2xl ">
+                <Image
+                  src="/images/hero.png"
+                  alt="hero image"
+                  fill
+                  priority
+                  className="object-cover"
+                />
                 <div className="absolute top-45 left-28">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -233,9 +263,25 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex items-stretch gap-8">
-                <div className="w-[475px] h-[600px] bg-gray-400 rounded-2xl" />
+                <div className="relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl">
+                  <Image
+                    src="/images/about_1.png"
+                    alt="hero image"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                </div>
                 <div className="flex-1 flex flex-col justify-between gap-8">
-                  <div className="w-full flex-1 bg-gray-400 rounded-2xl" />
+                  <div className="relative overflow-hidden w-full flex-1 bg-gray-400 rounded-2xl">
+                    <Image
+                      src="/images/about_2.png"
+                      alt="hero image"
+                      fill
+                      priority
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-end gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
@@ -330,7 +376,15 @@ export default function Home() {
                     <div className="bg-white rounded-xl border border-[#EEF2F5] p-6">
                       <div className="space-y-8">
                         <div className="flex items-center justify-between">
-                          <div className="w-16 h-16 rounded-full bg-gray-300" />
+                          <div className="w-16 h-16 rounded-full bg-gray-300 relative overflow-hidden">
+                            <Image
+                              src="/images/service.jpg"
+                              alt="hero image"
+                              fill
+                              priority
+                              className="object-cover"
+                            />
+                          </div>
                           <div className="space-y-0">
                             <div className="text-sm leading-150 tracking-[8%] text-[#51575C] font-medium uppercase">
                               Start From
@@ -400,8 +454,15 @@ export default function Home() {
                 </h2>
               </div>
               <div className="space-y-0">
-                <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center">
-                  <div className="h-24 w-24 rounded-full bg-white flex items-center justify-center">
+                <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                  <Image
+                    src="/images/video-bg.png"
+                    alt="hero image"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                  <div className="relative z-10 h-24 w-24 rounded-full bg-white flex items-center justify-center">
                     <Image
                       src="/play.png"
                       alt="play"
@@ -411,7 +472,7 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="flex justify-center -mt-24">
+                <div className="relative z-10 flex justify-center -mt-24">
                   <div className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6">
                     <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
                       <div className="font-semibold text-[22px] leading-120">
@@ -496,7 +557,15 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="w-100 bg-gray-400 rounded-2xl"></div>
+              <div className="w-100 bg-gray-400 rounded-2xl relative overflow-hidden">
+                <Image
+                  src="/images/work_hero.png"
+                  alt="hero image"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
               <div className="w-121 space-y-12">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
@@ -573,8 +642,15 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19 px-3">
-          <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center">
-            <div className="space-y-8">
+          <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+            <Image
+              src="/images/cta_bg.png"
+              alt="hero image"
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="relative z-10 space-y-8">
               <div className="space-y-6">
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2">
@@ -658,10 +734,33 @@ export default function Home() {
                   </div>
                   <div className="space-y-5">
                     <div className="flex items-center">
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
-                      <div className="w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5" />
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]">
+                        <Image
+                          src="/images/avatar_1.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                        <Image
+                          src="/images/avatar_2.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                        <Image
+                          src="/images/avatar_3.jpg"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
                     <div className="space-y-0.5">
                       <div className="text-2xl leading-150 font-semibold">
@@ -676,7 +775,14 @@ export default function Home() {
                 <div className="w-191 space-y-6">
                   <div className="p-6 bg-[#E3EEED] rounded-xl">
                     <div className="flex items-stretch justify-between gap-8">
-                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
+                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden">
+                        <Image
+                          src="/images/client_1.png"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
                           <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
                             <svg
@@ -759,7 +865,14 @@ export default function Home() {
                   </div>
                   <div className="p-6 bg-[#E3EEED] rounded-xl">
                     <div className="flex items-stretch justify-between gap-8">
-                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative">
+                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden">
+                        <Image
+                          src="/images/client_2.png"
+                          alt="hero image"
+                          fill
+                          priority
+                          className="object-cover"
+                        />
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
                           <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
                             <svg
@@ -920,7 +1033,15 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-4 gap-6">
                   <div className="space-y-4">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/team_1.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="rounded-xl bg-white p-3 flex items-center justify-between">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
@@ -953,7 +1074,15 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="space-y-4 mt-6">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/team_2.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="rounded-xl bg-white p-3 flex items-center justify-between">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
@@ -986,7 +1115,15 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="space-y-4">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/team_3.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="rounded-xl bg-white p-3 flex items-center justify-between">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
@@ -1019,7 +1156,15 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="space-y-4 mt-6">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/team_4.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="rounded-xl bg-white p-3 flex items-center justify-between">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
@@ -1080,7 +1225,15 @@ export default function Home() {
           <div className="container mx-auto">
             <div className="flex items-stretch gap-16">
               <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
-                <div className="rounded-xl bg-gray-400 h-105.5" />
+                <div className="rounded-xl bg-gray-400 h-105.5 relative overflow-hidden">
+                  <Image
+                    src="/images/faq_hero.png"
+                    alt="hero image"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                </div>
                 <div className="space-y-3">
                   <div className="font-semibold text-[22px] leading-120">
                     Have more{" "}
@@ -1336,8 +1489,24 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
-                    <div className="w-full h-60 rounded-2xl bg-gray-400"></div>
+                    <div className="w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/form_hero.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
+                      <Image
+                        src="/images/form_hero.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1442,7 +1611,15 @@ export default function Home() {
               <div className="flex items-center justify-between">
                 <div className="w-186 p-6 rounded-xl bg-primary">
                   <div className="flex items-center gap-8">
-                    <div className="h-43 w-70 bg-gray-400 rounded-lg"></div>
+                    <div className="h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
+                      <Image
+                        src="/images/footer_hero.png"
+                        alt="hero image"
+                        fill
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="flex-1 space-y-8">
                       <h3 className="text-[32px] text-white leading-150 font-semibold">
                         Subscribe our{" "}
