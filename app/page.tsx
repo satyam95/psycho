@@ -1,12 +1,119 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion, useInView } from "framer-motion";
 
 const navItems = ["Home", "Services", "About", "Projects", "Contact"];
 
+// Motion variants for staggered cards
+const containerVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+  hover: { y: -5, scale: 1.02, transition: { duration: 0.2 } },
+};
+
+// Back to Top button component
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setVisible(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (!visible) return null;
+  return (
+    <motion.button
+      className="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg"
+      onClick={handleClick}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+      initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      ↑
+    </motion.button>
+  );
+}
+
+function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const end = value;
+      if (start === end) return;
+
+      const duration = 1.5; // duration of count-up in seconds
+      const totalMiliseconds = duration * 1000;
+      const stepTime = Math.max(Math.floor(totalMiliseconds / end), 15);
+      
+      const timer = setInterval(() => {
+        start += 1;
+        setCount(start);
+        if (start === end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, value]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  const faqs = [
+    {
+      question: "What is therapy, and how does it help?",
+      answer: "Therapy is a safe, supportive space to explore emotions, challenges, and goals with a trained professional to improve mental well-being."
+    },
+    {
+      question: "Is online therapy as effective as in-person sessions?",
+      answer: "Yes, numerous studies show that online therapy (teletherapy) is just as effective as in-person sessions for most common mental health concerns, offering added convenience and comfort."
+    },
+    {
+      question: "What issues do your therapists specialize in?",
+      answer: "Our licensed therapists specialize in anxiety, depression, trauma, PTSD, relationship issues, family dynamics, stress management, and personal growth."
+    },
+    {
+      question: "How do I choose the right therapist?",
+      answer: "We match you with a therapist based on your specific needs, goals, and communication preferences. You can also review therapist profiles to find the best fit."
+    },
+    {
+      question: "How do I book my first session?",
+      answer: "Simply fill out our online booking form below, choose your preferred services and date, and our team will reach out to confirm your slot in minutes."
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,13 +136,23 @@ export default function Home() {
         <div className="container mx-auto py-5 px-4 xl:px-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-20">
-              <div className="text-[26px] leading-120 tracking-[-3%] font-semibold">
+              <div
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-[26px] leading-120 tracking-[-3%] font-semibold cursor-pointer text-black hover:text-primary transition-colors duration-300 select-none"
+              >
                 Mind
                 <span className="font-playfair-display italic">era</span>
               </div>
               <div className="flex items-center gap-8">
                 {navItems.map((item) => (
-                  <div className="text-base leading-120 font-medium" key={item}>{item}</div>
+                  <a
+                    href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
+                    className="text-base leading-120 font-medium text-black/80 hover:text-primary transition-colors duration-300 relative py-1 group cursor-pointer"
+                    key={item}
+                  >
+                    {item}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </a>
                 ))}
               </div>
             </div>
@@ -50,13 +167,16 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-white"
+                className="text-black/80 hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 <path d="M4 5h16" />
                 <path d="M4 12h16" />
                 <path d="M4 19h16" />
               </svg>
-              <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+              <a
+                href="#contact"
+                className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+              >
                 Get In Touch
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,18 +188,18 @@ export default function Home() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-white"
+                  className="text-white transition-transform duration-300 group-hover:translate-x-1"
                 >
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </header>
       <main>
-        <section className="pt-5 pb-19">
+        <motion.section className="pt-5 pb-19" initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, amount: 0.2 }}>
           <div className="container mx-auto">
             <div className="flex items-stretch gap-10">
               <div className="w-[55%] flex flex-col justify-end">
@@ -105,7 +225,10 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="flex items-center gap-6">
-                      <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                      <a
+                        href="#contact"
+                        className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                      >
                         Book A Session
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -117,13 +240,16 @@ export default function Home() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-white"
+                          className="text-white transition-transform duration-300 group-hover:translate-x-1"
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
-                      </div>
-                      <div className="border border-primary py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5">
+                      </a>
+                      <a
+                        href="#services"
+                        className="border border-primary hover:bg-primary/5 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer group"
+                      >
                         Explore Services
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -135,12 +261,12 @@ export default function Home() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-primary"
+                          className="text-primary transition-transform duration-300 group-hover:translate-x-1"
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
-                      </div>
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -235,8 +361,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19">
+        </motion.section>
+        <motion.section
+          className="py-19"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="space-y-16">
               <div className="space-y-6">
@@ -258,7 +390,10 @@ export default function Home() {
                   </span>
                 </h3>
                 <div className="flex items-center justify-center">
-                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  <a
+                    href="#about"
+                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                  >
                     More About Us
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -270,12 +405,12 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white"
+                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="flex items-stretch gap-8">
@@ -334,8 +469,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19 px-3">
+        </motion.section>
+        <motion.section
+          className="py-19 px-3"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="bg-[#E3EEEE] rounded-2xl py-38">
             <div className="container mx-auto">
               <div className="flex items-stretch gap-20">
@@ -361,7 +502,10 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                    <a
+                      href="#services"
+                      className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                    >
                       View All Services
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -373,12 +517,12 @@ export default function Home() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-white"
+                        className="text-white transition-transform duration-300 group-hover:translate-x-1"
                       >
                         <path d="M5 12h14" />
                         <path d="m12 5 7 7-7 7" />
                       </svg>
-                    </div>
+                    </a>
                   </div>
                 </div>
                 <div className="w-1/2 relative">
@@ -448,8 +592,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19">
+        </motion.section>
+        <motion.section
+          className="py-19"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="space-y-12">
               <div className="space-y-6">
@@ -533,8 +683,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19">
+        </motion.section>
+        <motion.section
+          className="py-19"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="flex items-stretch gap-12">
               <div className="w-75 flex flex-col justify-between">
@@ -553,7 +709,10 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="flex items-center">
-                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  <a
+                    href="#contact"
+                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                  >
                     Free Consultation
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -565,12 +724,12 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white"
+                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="w-100 bg-gray-400 rounded-2xl relative overflow-hidden">
@@ -656,8 +815,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19 px-3">
+        </motion.section>
+        <motion.section
+          className="py-19 px-3"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
             <Image
               src="/images/cta_bg.png"
@@ -689,7 +854,10 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center justify-center gap-6">
-                <div className="bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5">
+                <a
+                  href="#contact"
+                  className="bg-white hover:bg-white/90 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                >
                   Get Started
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -701,13 +869,16 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-black"
+                    className="text-black transition-transform duration-300 group-hover:translate-x-1"
                   >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
-                </div>
-                <div className="border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                </a>
+                <a
+                  href="#contact"
+                  className="border border-white hover:bg-white/10 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer group"
+                >
                   Contact Us
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -719,17 +890,23 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-white"
+                    className="text-white transition-transform duration-300 group-hover:translate-x-1"
                   >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
-                </div>
+                </a>
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19">
+        </motion.section>
+        <motion.section
+          className="py-19"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="space-y-20">
               <div className="flex items-stretch justify-between gap-12">
@@ -1025,8 +1202,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19 px-3">
+        </motion.section>
+        <motion.section
+          className="py-19 px-3"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="rounded-2xl bg-[#E3EEEE] py-38">
             <div className="container mx-auto">
               <div className="space-y-12">
@@ -1047,8 +1230,8 @@ export default function Home() {
                     </span>
                   </h2>
                 </div>
-                <div className="grid grid-cols-4 gap-6">
-                  <div className="space-y-4">
+                <motion.div className="grid grid-cols-4 gap-6" variants={containerVariant} initial={shouldReduceMotion ? "visible" : "hidden"} whileInView="visible" viewport={{ once: true }}>
+                  <motion.div className="space-y-4" variants={cardVariant} whileHover="hover">
                     <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_1.png"
@@ -1088,8 +1271,8 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                  </div>
-                  <div className="space-y-4 mt-6">
+                  </motion.div>
+                  <motion.div className="space-y-4 mt-6" variants={cardVariant} whileHover="hover">
                     <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_2.png"
@@ -1129,8 +1312,8 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                  </div>
-                  <div className="space-y-4">
+                  </motion.div>
+                  <motion.div className="space-y-4" variants={cardVariant} whileHover="hover">
                     <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_3.png"
@@ -1170,8 +1353,8 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                  </div>
-                  <div className="space-y-4 mt-6">
+                  </motion.div>
+                  <motion.div className="space-y-4 mt-6" variants={cardVariant} whileHover="hover">
                     <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_4.png"
@@ -1211,10 +1394,13 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
                 <div className="flex items-center justify-center">
-                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  <a
+                    href="#contact"
+                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                  >
                     View All Therapist
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1226,18 +1412,24 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white"
+                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <section className="py-19">
+        </motion.section>
+        <motion.section
+          className="py-19"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="flex items-stretch gap-16">
               <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
@@ -1263,7 +1455,10 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  <a
+                    href="#contact"
+                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
+                  >
                     Free Consultations
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1275,12 +1470,12 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white"
+                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="flex-1 flex flex-col justify-between">
@@ -1302,126 +1497,83 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="space-y-4">
-                  <div className="p-6 bg-primary rounded-lg space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-white text-[22px] leading-120">
-                        What is therapy, and how does it help?
-                      </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
+                <div className="space-y-4">
+                  {faqs.map((faq, index) => {
+                    const isOpen = openFaq === index;
+                    return (
+                      <div
+                        key={index}
+                        className={`p-6 rounded-lg transition-all duration-300 cursor-pointer ${
+                          isOpen
+                            ? "bg-primary text-white space-y-3"
+                            : "bg-[#F6F6F6] text-black hover:bg-[#EEF2F5]"
+                        }`}
+                        onClick={() => setOpenFaq(isOpen ? null : index)}
                       >
-                        <path d="M5 12h14" />
-                      </svg>
-                    </div>
-                    <p className="text-white text-base leading-150 font-medium">
-                      Therapy is a safe, supportive space to explore emotions,
-                      challenges, and goals with a lets si trained professional
-                      to improve mental well-being.
-                    </p>
-                  </div>
-                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[22px] leading-120">
-                        Is online therapy as effective as in-person sessions?
+                        <div className="flex items-center justify-between">
+                          <div
+                            className={`font-semibold text-[22px] leading-120 ${
+                              isOpen ? "text-white" : "text-black"
+                            }`}
+                          >
+                            {faq.question}
+                          </div>
+                          <motion.svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className={isOpen ? "text-white" : "text-black"}
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
+                            {isOpen ? (
+                              <path d="M5 12h14" />
+                            ) : (
+                              <>
+                                <path d="M5 12h14" />
+                                <path d="M12 5v14" />
+                              </>
+                            )}
+                          </motion.svg>
+                        </div>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                              animate={shouldReduceMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
+                              exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <p className="text-white text-base leading-150 font-medium pt-2">
+                                {faq.answer}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-black"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[22px] leading-120">
-                        What issues do your therapists specialize in?
-                      </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-black"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[22px] leading-120">
-                        How do I choose the right therapist?
-                      </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-black"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="p-6 bg-[#F6F6F6] rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[22px] leading-120">
-                        How do I book my first session?
-                      </div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-black"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </div>
-                  </div>
+                    );
+                  })}
+                </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <section className="pt-19 pb-38">
+        </motion.section>
+        <motion.section
+          id="contact"
+          className="pt-19 pb-38"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="container mx-auto">
             <div className="flex items-stretch gap-38">
               <div className="w-125.5">
@@ -1528,14 +1680,20 @@ export default function Home() {
               </div>
               <div className="flex-1 flex flex-col justify-between">
                 <div className="space-y-8">
-                  <div className="grid grid-cols-2 gap-8">
+                  <motion.div 
+                    initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    whileInView={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="grid grid-cols-2 gap-8"
+                  >
                     <div className="space-y-4">
                       <div className="text-sm leading-120 tracking-[-3%] font-medium">
                         First Name
                       </div>
                       <input
                         placeholder="e.g Jonyu"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1544,7 +1702,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g Branstorm"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1553,7 +1711,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g hello@advenza.com"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1562,7 +1720,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g (+62) 8123 4567 8900"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1571,7 +1729,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g Individual Therapy"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1580,23 +1738,32 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="Date"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                       />
                     </div>
-                  </div>
-                  <div className="space-y-4">
+                  </motion.div>
+                   <motion.div 
+                    initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="space-y-4"
+                  >
                     <div className="text-sm leading-120 tracking-[-3%] font-medium">
                       Message
                     </div>
                     <textarea
                       rows={7}
                       placeholder="Write your message here..."
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
                     />
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="flex items-center">
-                  <div className="bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5">
+                  <button
+                    type="submit"
+                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group border-none outline-none"
+                  >
                     Book My Session
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1608,17 +1775,17 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white"
+                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
       <footer className="px-3 pb-3">
         <div className="bg-black rounded-2xl">
@@ -1786,8 +1953,11 @@ export default function Home() {
               <div className="text-sm leading-150 text-white/90">
                 © 2025 All Right Reserved by Mindera.
               </div>
-              <div className="text-base leading-120 text-white p-2 border border-white rounded-full flex items-center gap-3">
-                <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-base leading-120 text-white p-2 border border-white/40 hover:border-white rounded-full flex items-center gap-3 cursor-pointer transition-all duration-300 hover:bg-white/10 active:scale-95 group shadow-sm"
+              >
+                <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -1795,7 +1965,7 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="text-white"
@@ -1805,7 +1975,7 @@ export default function Home() {
                   </svg>
                 </div>
                 Back To Top
-              </div>
+              </button>
             </div>
           </div>
         </div>
