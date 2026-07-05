@@ -1,119 +1,116 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, useReducedMotion, useInView } from "framer-motion";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
 const navItems = ["Home", "Services", "About", "Projects", "Contact"];
 
-// Motion variants for staggered cards
-const containerVariant = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      ease: "easeOut" as const,
-    },
+const faqItems = [
+  {
+    question: "What is therapy, and how does it help?",
+    answer:
+      "Therapy is a safe, supportive space to explore emotions, challenges, and goals with a trained professional to improve mental well-being.",
   },
-};
+  {
+    question: "Is online therapy as effective as in-person sessions?",
+    answer:
+      "Yes. Studies show online therapy can be just as effective as in-person sessions for most concerns, while offering more flexibility and easier access to specialists.",
+  },
+  {
+    question: "What issues do your therapists specialize in?",
+    answer:
+      "Our team specializes in anxiety, depression, trauma, relationship issues, grief, and life transitions, with several therapists offering niche expertise in areas like burnout and postpartum care.",
+  },
+  {
+    question: "How do I choose the right therapist?",
+    answer:
+      "Start with a free consultation call. We'll ask about your goals and preferences, then match you with a therapist whose approach and specialty fit your needs.",
+  },
+  {
+    question: "How do I book my first session?",
+    answer:
+      "Fill out the booking form below, choose a convenient date and time, and you'll receive a confirmation email with everything you need to get started.",
+  },
+];
 
-const cardVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-  hover: { y: -5, scale: 1.02, transition: { duration: 0.2 } },
-};
-
-// Back to Top button component
-function BackToTop() {
-  const [visible, setVisible] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
+/**
+ * Reveal
+ * Lightweight, dependency-free scroll-entrance animation.
+ * Uses IntersectionObserver + opacity/transform (GPU-friendly, no layout thrash).
+ * Fully respects `prefers-reduced-motion` via Tailwind's `motion-reduce:` variant.
+ */
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  as = "div",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  as?: ElementType;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  const Tag = as as any;
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setVisible(window.scrollY > 300);
-    };
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  if (!visible) return null;
   return (
-    <motion.button
-      className="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg"
-      onClick={handleClick}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-      whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-      initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-      animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+    <Tag
+      ref={ref}
+      style={{ transitionDelay: inView ? `${delay}ms` : "0ms" }}
+      className={`transition-all duration-700 ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      } ${className}`}
     >
-      ↑
-    </motion.button>
+      {children}
+    </Tag>
   );
 }
 
-function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+/** Shared hover-affordance classes for pill buttons (transform/opacity/shadow only). */
+const btnPrimary =
+  "bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-  useEffect(() => {
-    if (inView) {
-      let start = 0;
-      const end = value;
-      if (start === end) return;
+const btnOutlinePrimary =
+  "border border-primary py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-      const duration = 1.5; // duration of count-up in seconds
-      const totalMiliseconds = duration * 1000;
-      const stepTime = Math.max(Math.floor(totalMiliseconds / end), 15);
-      
-      const timer = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === end) {
-          clearInterval(timer);
-        }
-      }, stepTime);
+const btnOutlineWhite =
+  "border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-black hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-      return () => clearInterval(timer);
-    }
-  }, [inView, value]);
+const btnSolidWhite =
+  "bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-  return <span ref={ref}>{count}{suffix}</span>;
-}
+/** Arrow icon nudges slightly on parent hover (uses group). */
+const arrowIconClass =
+  "transition-transform duration-300 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const shouldReduceMotion = useReducedMotion();
-
-  const faqs = [
-    {
-      question: "What is therapy, and how does it help?",
-      answer: "Therapy is a safe, supportive space to explore emotions, challenges, and goals with a trained professional to improve mental well-being."
-    },
-    {
-      question: "Is online therapy as effective as in-person sessions?",
-      answer: "Yes, numerous studies show that online therapy (teletherapy) is just as effective as in-person sessions for most common mental health concerns, offering added convenience and comfort."
-    },
-    {
-      question: "What issues do your therapists specialize in?",
-      answer: "Our licensed therapists specialize in anxiety, depression, trauma, PTSD, relationship issues, family dynamics, stress management, and personal growth."
-    },
-    {
-      question: "How do I choose the right therapist?",
-      answer: "We match you with a therapist based on your specific needs, goals, and communication preferences. You can also review therapist profiles to find the best fit."
-    },
-    {
-      question: "How do I book my first session?",
-      answer: "Simply fill out our online booking form below, choose your preferred services and date, and our team will reach out to confirm your slot in minutes."
-    }
-  ];
+  const [openFaq, setOpenFaq] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,34 +122,32 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-sm"
-          : "bg-transparent"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled ? "bg-white/80 backdrop-blur-xl shadow-sm" : "bg-transparent"
+        }`}
       >
         <div className="container mx-auto py-5 px-4 xl:px-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-20">
-              <div
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="text-[26px] leading-120 tracking-[-3%] font-semibold cursor-pointer text-black hover:text-primary transition-colors duration-300 select-none"
-              >
+              <div className="text-[26px] leading-120 tracking-[-3%] font-semibold transition-opacity duration-300 hover:opacity-80 cursor-pointer">
                 Mind
                 <span className="font-playfair-display italic">era</span>
               </div>
               <div className="flex items-center gap-8">
                 {navItems.map((item) => (
-                  <a
-                    href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
-                    className="text-base leading-120 font-medium text-black/80 hover:text-primary transition-colors duration-300 relative py-1 group cursor-pointer"
+                  <div
+                    className="relative text-base leading-120 font-medium cursor-pointer text-black/90 transition-colors duration-300 hover:text-primary after:absolute after:left-0 after:-bottom-1.5 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full motion-reduce:after:transition-none"
                     key={item}
                   >
                     {item}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>
@@ -167,16 +162,13 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-black/80 hover:text-primary transition-colors duration-300 cursor-pointer"
+                className="text-white cursor-pointer transition-opacity duration-300 hover:opacity-70"
               >
                 <path d="M4 5h16" />
                 <path d="M4 12h16" />
                 <path d="M4 19h16" />
               </svg>
-              <a
-                href="#contact"
-                className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-              >
+              <div className={`group ${btnPrimary}`}>
                 Get In Touch
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,21 +180,21 @@ export default function Home() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                  className={`text-white ${arrowIconClass}`}
                 >
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-              </a>
+              </div>
             </div>
           </div>
         </div>
       </header>
       <main>
-        <motion.section className="pt-5 pb-19" initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, amount: 0.2 }}>
+        <section className="pt-5 pb-19">
           <div className="container mx-auto">
             <div className="flex items-stretch gap-10">
-              <div className="w-[55%] flex flex-col justify-end">
+              <Reveal className="w-[55%] flex flex-col justify-end">
                 <div className="space-y-37">
                   <div className="space-y-8">
                     <div className="space-y-6">
@@ -225,10 +217,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="flex items-center gap-6">
-                      <a
-                        href="#contact"
-                        className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                      >
+                      <div className={`group ${btnPrimary}`}>
                         Book A Session
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -240,16 +229,13 @@ export default function Home() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                          className={`text-white ${arrowIconClass}`}
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
-                      </a>
-                      <a
-                        href="#services"
-                        className="border border-primary hover:bg-primary/5 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer group"
-                      >
+                      </div>
+                      <div className={`group ${btnOutlinePrimary}`}>
                         Explore Services
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -261,17 +247,17 @@ export default function Home() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-primary transition-transform duration-300 group-hover:translate-x-1"
+                          className={`text-primary group-hover:text-white ${arrowIconClass}`}
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
-                      </a>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center">
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_1.jpg"
                           alt="hero image"
@@ -280,7 +266,7 @@ export default function Home() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_2.jpg"
                           alt="hero image"
@@ -289,7 +275,7 @@ export default function Home() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_3.jpg"
                           alt="hero image"
@@ -317,17 +303,20 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="relative overflow-hidden w-[45%] h-195 bg-gray-400 rounded-2xl ">
+              </Reveal>
+              <Reveal
+                delay={120}
+                className="group relative overflow-hidden w-[45%] h-195 bg-gray-400 rounded-2xl"
+              >
                 <Image
                   src="/images/hero.png"
                   alt="hero image"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                 />
                 <div className="absolute top-45 left-28">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
                       Certified Therapists
@@ -335,7 +324,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="absolute top-65 right-18">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
                       100% Confidential
@@ -343,7 +332,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="absolute bottom-74 left-12">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
                       HIPAA Compliant
@@ -351,27 +340,21 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="absolute bottom-47 right-20">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)]">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
                       Flexible Session
                     </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19">
           <div className="container mx-auto">
             <div className="space-y-16">
-              <div className="space-y-6">
+              <Reveal className="space-y-6">
                 <div className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -390,10 +373,7 @@ export default function Home() {
                   </span>
                 </h3>
                 <div className="flex items-center justify-center">
-                  <a
-                    href="#about"
-                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                  >
+                  <div className={`group ${btnPrimary}`}>
                     More About Us
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -405,32 +385,38 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                      className={`text-white ${arrowIconClass}`}
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
               <div className="flex items-stretch gap-8">
-                <div className="relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl">
+                <Reveal
+                  delay={80}
+                  className="group relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl"
+                >
                   <Image
                     src="/images/about_1.png"
                     alt="hero image"
                     fill
                     priority
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                   />
-                </div>
-                <div className="flex-1 flex flex-col justify-between gap-8">
-                  <div className="relative overflow-hidden w-full flex-1 bg-gray-400 rounded-2xl">
+                </Reveal>
+                <Reveal
+                  delay={160}
+                  className="flex-1 flex flex-col justify-between gap-8"
+                >
+                  <div className="group relative overflow-hidden w-full flex-1 bg-gray-400 rounded-2xl">
                     <Image
                       src="/images/about_2.png"
                       alt="hero image"
                       fill
                       priority
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                     />
                   </div>
                   <div className="flex items-center justify-between">
@@ -465,22 +451,16 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               </div>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19 px-3"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19 px-3">
           <div className="bg-[#E3EEEE] rounded-2xl py-38">
             <div className="container mx-auto">
               <div className="flex items-stretch gap-20">
-                <div className="w-1/2 space-y-8">
+                <Reveal className="w-1/2 space-y-8">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -502,10 +482,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <a
-                      href="#services"
-                      className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                    >
+                    <div className={`group ${btnPrimary}`}>
                       View All Services
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -517,15 +494,15 @@ export default function Home() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                        className={`text-white ${arrowIconClass}`}
                       >
                         <path d="M5 12h14" />
                         <path d="m12 5 7 7-7 7" />
                       </svg>
-                    </a>
+                    </div>
                   </div>
-                </div>
-                <div className="w-1/2 relative">
+                </Reveal>
+                <Reveal delay={120} className="w-1/2 relative">
                   <div className="absolute top-0 left-0 z-10 w-full h-full">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
@@ -533,7 +510,7 @@ export default function Home() {
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
                   <div className="absolute bottom-0 left-0 z-30">
-                    <div className="bg-white rounded-xl border border-[#EEF2F5] p-6">
+                    <div className="bg-white rounded-xl border border-[#EEF2F5] p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="space-y-8">
                         <div className="flex items-center justify-between">
                           <div className="w-16 h-16 rounded-full bg-gray-300 relative overflow-hidden">
@@ -574,13 +551,13 @@ export default function Home() {
                             </p>
                           </div>
                           <div className="flex items-center gap-2">
-                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5] transition-colors duration-300 hover:border-primary hover:text-primary">
                               Group Healing
                             </div>
-                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5] transition-colors duration-300 hover:border-primary hover:text-primary">
                               Behavioral Guidance
                             </div>
-                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5]">
+                            <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5] transition-colors duration-300 hover:border-primary hover:text-primary">
                               Stronger Bonds
                             </div>
                           </div>
@@ -588,21 +565,15 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               </div>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19">
           <div className="container mx-auto">
             <div className="space-y-12">
-              <div className="space-y-6">
+              <Reveal className="space-y-6">
                 <div className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -618,17 +589,20 @@ export default function Home() {
                     That Empowers You
                   </span>
                 </h2>
-              </div>
+              </Reveal>
               <div className="space-y-0">
-                <div className="aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                <Reveal
+                  delay={80}
+                  className="group aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden cursor-pointer"
+                >
                   <Image
                     src="/images/video-bg.png"
                     alt="hero image"
                     fill
                     priority
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                   />
-                  <div className="relative z-10 h-24 w-24 rounded-full bg-white flex items-center justify-center">
+                  <div className="relative z-10 h-24 w-24 rounded-full bg-white flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none">
                     <Image
                       src="/play.png"
                       alt="play"
@@ -637,10 +611,13 @@ export default function Home() {
                       className="ml-2"
                     />
                   </div>
-                </div>
+                </Reveal>
                 <div className="relative z-10 flex justify-center -mt-24">
-                  <div className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6">
-                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                  <Reveal
+                    delay={160}
+                    className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6"
+                  >
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="font-semibold text-[22px] leading-120">
                         👩‍⚕️ Licensed{" "}
                         <span className="font-playfair-display italic">
@@ -652,7 +629,7 @@ export default function Home() {
                         deeply committ to ethical, mentaly personalized.
                       </p>
                     </div>
-                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="font-semibold text-[22px] leading-120">
                         🔒 Confidential{" "}
                         <span className="font-playfair-display italic">
@@ -665,7 +642,7 @@ export default function Home() {
                         personalized.
                       </p>
                     </div>
-                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88">
+                    <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="font-semibold text-[22px] leading-120">
                         💬 Flexible{" "}
                         <span className="font-playfair-display italic">
@@ -678,22 +655,16 @@ export default function Home() {
                         personalized.
                       </p>
                     </div>
-                  </div>
+                  </Reveal>
                 </div>
               </div>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19">
           <div className="container mx-auto">
             <div className="flex items-stretch gap-12">
-              <div className="w-75 flex flex-col justify-between">
+              <Reveal className="w-75 flex flex-col justify-between">
                 <div className="space-y-6">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -709,10 +680,7 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="flex items-center">
-                  <a
-                    href="#contact"
-                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                  >
+                  <div className={`group ${btnPrimary}`}>
                     Free Consultation
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -724,25 +692,28 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                      className={`text-white ${arrowIconClass}`}
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div className="w-100 bg-gray-400 rounded-2xl relative overflow-hidden">
+              </Reveal>
+              <Reveal
+                delay={100}
+                className="group w-100 bg-gray-400 rounded-2xl relative overflow-hidden"
+              >
                 <Image
                   src="/images/work_hero.png"
                   alt="hero image"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                 />
-              </div>
-              <div className="w-121 space-y-12">
-                <div className="flex items-start gap-3">
+              </Reveal>
+              <Reveal delay={200} className="w-121 space-y-12">
+                <div className="flex items-start gap-3 transition-transform duration-300 ease-out hover:translate-x-1 motion-reduce:transition-none">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
                     <div className="min-w-3 min-h-3 rounded-full bg-primary" />
                   </div>
@@ -760,7 +731,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 transition-transform duration-300 ease-out hover:translate-x-1 motion-reduce:transition-none">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
                     <div className="min-w-3 min-h-3 rounded-full bg-primary" />
                   </div>
@@ -777,7 +748,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 transition-transform duration-300 ease-out hover:translate-x-1 motion-reduce:transition-none">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
                     <div className="min-w-3 min-h-3 rounded-full bg-primary" />
                   </div>
@@ -794,7 +765,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 transition-transform duration-300 ease-out hover:translate-x-1 motion-reduce:transition-none">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
                     <div className="min-w-3 min-h-3 rounded-full bg-primary" />
                   </div>
@@ -812,18 +783,12 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19 px-3"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <div className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+        </section>
+        <section className="py-19 px-3">
+          <Reveal className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
             <Image
               src="/images/cta_bg.png"
               alt="hero image"
@@ -854,10 +819,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center justify-center gap-6">
-                <a
-                  href="#contact"
-                  className="bg-white hover:bg-white/90 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                >
+                <div className={`group ${btnSolidWhite}`}>
                   Get Started
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -869,16 +831,13 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-black transition-transform duration-300 group-hover:translate-x-1"
+                    className={`text-black ${arrowIconClass}`}
                   >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
-                </a>
-                <a
-                  href="#contact"
-                  className="border border-white hover:bg-white/10 active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer group"
-                >
+                </div>
+                <div className={`group ${btnOutlineWhite}`}>
                   Contact Us
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -890,27 +849,21 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                    className={`text-white group-hover:text-black ${arrowIconClass}`}
                   >
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.section>
-        <motion.section
-          className="py-19"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+          </Reveal>
+        </section>
+        <section className="py-19">
           <div className="container mx-auto">
             <div className="space-y-20">
               <div className="flex items-stretch justify-between gap-12">
-                <div className="w-92 flex flex-col justify-between">
+                <Reveal className="w-92 flex flex-col justify-between">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -927,7 +880,7 @@ export default function Home() {
                   </div>
                   <div className="space-y-5">
                     <div className="flex items-center">
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4]">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_1.jpg"
                           alt="hero image"
@@ -936,7 +889,7 @@ export default function Home() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_2.jpg"
                           alt="hero image"
@@ -945,7 +898,7 @@ export default function Home() {
                           className="object-cover"
                         />
                       </div>
-                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5">
+                      <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] -ml-5 transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
                           src="/images/avatar_3.jpg"
                           alt="hero image"
@@ -964,20 +917,20 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-191 space-y-6">
-                  <div className="p-6 bg-[#E3EEED] rounded-xl">
+                </Reveal>
+                <Reveal delay={120} className="w-191 space-y-6">
+                  <div className="p-6 bg-[#E3EEED] rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none">
                     <div className="flex items-stretch justify-between gap-8">
-                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden">
+                      <div className="group w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden cursor-pointer">
                         <Image
                           src="/images/client_1.png"
                           alt="hero image"
                           fill
                           priority
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                         />
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
+                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10 transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="16"
@@ -1056,18 +1009,18 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-6 bg-[#E3EEED] rounded-xl">
+                  <div className="p-6 bg-[#E3EEED] rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none">
                     <div className="flex items-stretch justify-between gap-8">
-                      <div className="w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden">
+                      <div className="group w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden cursor-pointer">
                         <Image
                           src="/images/client_2.png"
                           alt="hero image"
                           fill
                           priority
-                          className="object-cover"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                         />
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10">
+                          <div className="min-w-[146px] text-base text-white leading-150 font-semibold flex items-center gap-2 py-2 px-5 rounded-md bg-[#261C17]/16 border border-white/10 transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="16"
@@ -1146,9 +1099,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               </div>
-              <div className="space-y-12">
+              <Reveal className="space-y-12">
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -1158,7 +1111,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-6">
-                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
                       alt="company logo"
@@ -1166,7 +1119,7 @@ export default function Home() {
                       height={40}
                     />
                   </div>
-                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
                       alt="company logo"
@@ -1174,7 +1127,7 @@ export default function Home() {
                       height={40}
                     />
                   </div>
-                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
                       alt="company logo"
@@ -1182,7 +1135,7 @@ export default function Home() {
                       height={40}
                     />
                   </div>
-                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
                       alt="company logo"
@@ -1190,7 +1143,7 @@ export default function Home() {
                       height={40}
                     />
                   </div>
-                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center">
+                  <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
                       alt="company logo"
@@ -1199,21 +1152,15 @@ export default function Home() {
                     />
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19 px-3"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19 px-3">
           <div className="rounded-2xl bg-[#E3EEEE] py-38">
             <div className="container mx-auto">
               <div className="space-y-12">
-                <div className="space-y-6">
+                <Reveal className="space-y-6">
                   <div className="flex items-center justify-center">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -1229,19 +1176,19 @@ export default function Home() {
                       Behind Your Healing
                     </span>
                   </h2>
-                </div>
-                <motion.div className="grid grid-cols-4 gap-6" variants={containerVariant} initial={shouldReduceMotion ? "visible" : "hidden"} whileInView="visible" viewport={{ once: true }}>
-                  <motion.div className="space-y-4" variants={cardVariant} whileHover="hover">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                </Reveal>
+                <div className="grid grid-cols-4 gap-6">
+                  <Reveal delay={0} className="space-y-4">
+                    <div className="group w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_1.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between transition-shadow duration-300 ease-out hover:shadow-lg">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
                           Dr. Clara{" "}
@@ -1253,7 +1200,7 @@ export default function Home() {
                           Clinical Psychologist
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center transition-transform duration-300 ease-out hover:scale-110 motion-reduce:transition-none cursor-pointer">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -1271,18 +1218,18 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                  </motion.div>
-                  <motion.div className="space-y-4 mt-6" variants={cardVariant} whileHover="hover">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                  </Reveal>
+                  <Reveal delay={80} className="space-y-4 mt-6">
+                    <div className="group w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_2.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between transition-shadow duration-300 ease-out hover:shadow-lg">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
                           Michael,{" "}
@@ -1294,7 +1241,7 @@ export default function Home() {
                           Licensed Therapist
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center transition-all duration-300 ease-out hover:scale-110 hover:bg-primary motion-reduce:transition-none cursor-pointer group/icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -1305,25 +1252,25 @@ export default function Home() {
                           strokeWidth="1"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-primary -rotate-45"
+                          className="text-primary -rotate-45 transition-colors duration-300 group-hover/icon:text-white"
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
                       </div>
                     </div>
-                  </motion.div>
-                  <motion.div className="space-y-4" variants={cardVariant} whileHover="hover">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                  </Reveal>
+                  <Reveal delay={160} className="space-y-4">
+                    <div className="group w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_3.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between transition-shadow duration-300 ease-out hover:shadow-lg">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
                           Soflea,{" "}
@@ -1335,7 +1282,7 @@ export default function Home() {
                           Family Therapist
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center transition-all duration-300 ease-out hover:scale-110 hover:bg-primary motion-reduce:transition-none cursor-pointer group/icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -1346,25 +1293,25 @@ export default function Home() {
                           strokeWidth="1"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-primary -rotate-45"
+                          className="text-primary -rotate-45 transition-colors duration-300 group-hover/icon:text-white"
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
                       </div>
                     </div>
-                  </motion.div>
-                  <motion.div className="space-y-4 mt-6" variants={cardVariant} whileHover="hover">
-                    <div className="w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
+                  </Reveal>
+                  <Reveal delay={240} className="space-y-4 mt-6">
+                    <div className="group w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/team_4.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="rounded-xl bg-white p-3 flex items-center justify-between">
+                    <div className="rounded-xl bg-white p-3 flex items-center justify-between transition-shadow duration-300 ease-out hover:shadow-lg">
                       <div className="space-y-1">
                         <div className="font-semibold text-[22px] leading-120">
                           Lucas{" "}
@@ -1376,7 +1323,7 @@ export default function Home() {
                           Online Therapy
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center transition-all duration-300 ease-out hover:scale-110 hover:bg-primary motion-reduce:transition-none cursor-pointer group/icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -1387,20 +1334,17 @@ export default function Home() {
                           strokeWidth="1"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-primary -rotate-45"
+                          className="text-primary -rotate-45 transition-colors duration-300 group-hover/icon:text-white"
                         >
                           <path d="M5 12h14" />
                           <path d="m12 5 7 7-7 7" />
                         </svg>
                       </div>
                     </div>
-                  </motion.div>
-                </motion.div>
+                  </Reveal>
+                </div>
                 <div className="flex items-center justify-center">
-                  <a
-                    href="#contact"
-                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                  >
+                  <div className={`group ${btnPrimary}`}>
                     View All Therapist
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1412,34 +1356,28 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                      className={`text-white ${arrowIconClass}`}
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          className="py-19"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="py-19">
           <div className="container mx-auto">
             <div className="flex items-stretch gap-16">
-              <div className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
-                <div className="rounded-xl bg-gray-400 h-105.5 relative overflow-hidden">
+              <Reveal className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
+                <div className="group rounded-xl bg-gray-400 h-105.5 relative overflow-hidden">
                   <Image
                     src="/images/faq_hero.png"
                     alt="hero image"
                     fill
                     priority
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                   />
                 </div>
                 <div className="space-y-3">
@@ -1455,10 +1393,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <a
-                    href="#contact"
-                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group"
-                  >
+                  <div className={`group ${btnPrimary}`}>
                     Free Consultations
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1470,15 +1405,18 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                      className={`text-white ${arrowIconClass}`}
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
-              <div className="flex-1 flex flex-col justify-between">
+              </Reveal>
+              <Reveal
+                delay={120}
+                className="flex-1 flex flex-col justify-between"
+              >
                 <div className="space-y-6">
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">
@@ -1497,28 +1435,31 @@ export default function Home() {
                   </h2>
                 </div>
                 <div className="space-y-4">
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => {
+                  {faqItems.map((item, index) => {
                     const isOpen = openFaq === index;
                     return (
                       <div
-                        key={index}
-                        className={`p-6 rounded-lg transition-all duration-300 cursor-pointer ${
+                        key={item.question}
+                        className={`rounded-lg p-6 transition-colors duration-300 ease-out ${
                           isOpen
-                            ? "bg-primary text-white space-y-3"
-                            : "bg-[#F6F6F6] text-black hover:bg-[#EEF2F5]"
+                            ? "bg-primary"
+                            : "bg-[#F6F6F6] hover:bg-[#EEF2F5]"
                         }`}
-                        onClick={() => setOpenFaq(isOpen ? null : index)}
                       >
-                        <div className="flex items-center justify-between">
+                        <button
+                          type="button"
+                          onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                          aria-expanded={isOpen}
+                          className="w-full flex items-center justify-between gap-4 text-left cursor-pointer bg-transparent"
+                        >
                           <div
                             className={`font-semibold text-[22px] leading-120 ${
                               isOpen ? "text-white" : "text-black"
                             }`}
                           >
-                            {faq.question}
+                            {item.question}
                           </div>
-                          <motion.svg
+                          <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
@@ -1528,55 +1469,46 @@ export default function Home() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className={isOpen ? "text-white" : "text-black"}
-                            animate={{ rotate: isOpen ? 180 : 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className={`shrink-0 transition-colors duration-300 ${
+                              isOpen ? "text-white" : "text-black"
+                            }`}
                           >
-                            {isOpen ? (
-                              <path d="M5 12h14" />
-                            ) : (
-                              <>
-                                <path d="M5 12h14" />
-                                <path d="M12 5v14" />
-                              </>
-                            )}
-                          </motion.svg>
+                            <path d="M5 12h14" />
+                            <path
+                              d="M12 5v14"
+                              className={`transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                                isOpen ? "scale-y-0" : "scale-y-100"
+                              }`}
+                            />
+                          </svg>
+                        </button>
+                        <div
+                          className={`grid overflow-hidden transition-all duration-300 ease-out motion-reduce:transition-none ${
+                            isOpen
+                              ? "grid-rows-[1fr] opacity-100"
+                              : "grid-rows-[0fr] opacity-0"
+                          }`}
+                        >
+                          <p
+                            className={`min-h-0 text-base leading-150 font-medium ${
+                              isOpen ? "text-white pt-6" : "text-[#51575C]"
+                            }`}
+                          >
+                            {item.answer}
+                          </p>
                         </div>
-                        <AnimatePresence initial={false}>
-                          {isOpen && (
-                            <motion.div
-                              initial={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                              animate={shouldReduceMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-                              exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                              className="overflow-hidden"
-                            >
-                              <p className="text-white text-base leading-150 font-medium pt-2">
-                                {faq.answer}
-                              </p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
                       </div>
                     );
                   })}
                 </div>
-                </div>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </motion.section>
-        <motion.section
-          id="contact"
-          className="pt-19 pb-38"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        </section>
+        <section className="pt-19 pb-38">
           <div className="container mx-auto">
             <div className="flex items-stretch gap-38">
-              <div className="w-125.5">
+              <Reveal className="w-125.5">
                 <div className="space-y-20">
                   <div className="space-y-12">
                     <div className="space-y-6">
@@ -1601,7 +1533,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="flex items-center gap-16">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 transition-transform duration-300 ease-out hover:-translate-y-0.5 motion-reduce:transition-none">
                         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1627,7 +1559,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 transition-transform duration-300 ease-out hover:-translate-y-0.5 motion-reduce:transition-none">
                         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1657,43 +1589,40 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
+                    <div className="group w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/form_hero.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
-                    <div className="w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
+                    <div className="group w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/form_hero.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex-1 flex flex-col justify-between">
+              </Reveal>
+              <Reveal
+                delay={140}
+                className="flex-1 flex flex-col justify-between"
+              >
                 <div className="space-y-8">
-                  <motion.div 
-                    initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    whileInView={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="grid grid-cols-2 gap-8"
-                  >
+                  <div className="grid grid-cols-2 gap-8">
                     <div className="space-y-4">
                       <div className="text-sm leading-120 tracking-[-3%] font-medium">
                         First Name
                       </div>
                       <input
                         placeholder="e.g Jonyu"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1702,7 +1631,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g Branstorm"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1711,7 +1640,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g hello@advenza.com"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1720,7 +1649,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g (+62) 8123 4567 8900"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1729,7 +1658,7 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="e.g Individual Therapy"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
                     <div className="space-y-4">
@@ -1738,32 +1667,23 @@ export default function Home() {
                       </div>
                       <input
                         placeholder="Date"
-                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                        className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                       />
                     </div>
-                  </motion.div>
-                   <motion.div 
-                    initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="space-y-4"
-                  >
+                  </div>
+                  <div className="space-y-4">
                     <div className="text-sm leading-120 tracking-[-3%] font-medium">
                       Message
                     </div>
                     <textarea
                       rows={7}
                       placeholder="Write your message here..."
-                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md focus:ring-2 focus:ring-primary focus:border-primary"
+                      className="w-full outline-none p-3 bg-[#F6F6F6] border border-[#EEF2F5] rounded-md transition-all duration-300 ease-out focus:border-primary focus:ring-2 focus:ring-primary/15 focus:bg-white"
                     />
-                  </motion.div>
+                  </div>
                 </div>
                 <div className="flex items-center">
-                  <button
-                    type="submit"
-                    className="bg-primary hover:bg-[#0c6666] active:scale-95 transition-all duration-300 py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md group border-none outline-none"
-                  >
+                  <div className={`group ${btnPrimary}`}>
                     Book My Session
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -1775,32 +1695,32 @@ export default function Home() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-white transition-transform duration-300 group-hover:translate-x-1"
+                      className={`text-white ${arrowIconClass}`}
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />
                     </svg>
-                  </button>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </motion.section>
+        </section>
       </main>
       <footer className="px-3 pb-3">
         <div className="bg-black rounded-2xl">
           <div className="container mx-auto">
             <div className="py-38 space-y-20">
-              <div className="flex items-center justify-between">
+              <Reveal className="flex items-center justify-between">
                 <div className="w-186 p-6 rounded-xl bg-primary">
                   <div className="flex items-center gap-8">
-                    <div className="h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
+                    <div className="group h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
                       <Image
                         src="/images/footer_hero.png"
                         alt="hero image"
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                       />
                     </div>
                     <div className="flex-1 space-y-8">
@@ -1810,7 +1730,7 @@ export default function Home() {
                           newsletter
                         </span>
                       </h3>
-                      <div className="border-b border-white pb-4 flex items-center justify-between">
+                      <div className="group border-b border-white pb-4 flex items-center justify-between transition-colors duration-300 focus-within:border-white/70">
                         <input
                           placeholder="Your email here ..."
                           className="text-white outline-none w-full text-sm placeholder:text-white"
@@ -1825,7 +1745,7 @@ export default function Home() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-white"
+                          className="text-white cursor-pointer transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transition-none"
                         >
                           <path d="M18 8L22 12L18 16" />
                           <path d="M2 12H22" />
@@ -1845,23 +1765,23 @@ export default function Home() {
                     empathetic.
                   </p>
                 </div>
-              </div>
-              <div className="flex items-start justify-between">
+              </Reveal>
+              <Reveal delay={100} className="flex items-start justify-between">
                 <div className="space-y-4 w-27">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Company
                   </div>
                   <div className="space-y-2">
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       About Us
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Career
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Our Approach
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Case Studies
                     </div>
                   </div>
@@ -1871,16 +1791,16 @@ export default function Home() {
                     Services
                   </div>
                   <div className="space-y-2">
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Individual Therapy
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Family Therapy
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Couples Counseling
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Depression Treatment
                     </div>
                   </div>
@@ -1890,14 +1810,16 @@ export default function Home() {
                     Resources
                   </div>
                   <div className="space-y-2">
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Blog / Articles
                     </div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Detail Guides
                     </div>
-                    <div className="text-base text-white leading-150">FAQs</div>
-                    <div className="text-base text-white leading-150">
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
+                      FAQs
+                    </div>
+                    <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                       Help Center
                     </div>
                   </div>
@@ -1908,24 +1830,24 @@ export default function Home() {
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Instagram
                       </div>
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Twitter
                       </div>
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Tiktok
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Facebook
                       </div>
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Linkedin
                       </div>
-                      <div className="text-base text-white leading-150">
+                      <div className="text-base text-white leading-150 cursor-pointer transition-colors duration-300 hover:text-primary">
                         Youtube
                       </div>
                     </div>
@@ -1947,17 +1869,17 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
             <div className="py-8 border-t border-[#575654] flex items-center justify-between">
               <div className="text-sm leading-150 text-white/90">
                 © 2025 All Right Reserved by Mindera.
               </div>
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="text-base leading-120 text-white p-2 border border-white/40 hover:border-white rounded-full flex items-center gap-3 cursor-pointer transition-all duration-300 hover:bg-white/10 active:scale-95 group shadow-sm"
+                onClick={scrollToTop}
+                className="group text-base leading-120 text-white p-2 border border-white rounded-full flex items-center gap-3 transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-0.5 motion-reduce:transition-none"
               >
-                <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
+                <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -1965,10 +1887,10 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-white"
+                    className="text-white transition-transform duration-300 ease-out group-hover:-translate-y-0.5 motion-reduce:transition-none"
                   >
                     <path d="m5 12 7-7 7 7" />
                     <path d="M12 19V5" />
