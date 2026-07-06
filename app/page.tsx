@@ -140,7 +140,7 @@ export default function Home() {
                 Mind
                 <span className="font-playfair-display italic">era</span>
               </div>
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-6 xl:gap-8">
                 {navItems.map((item) => (
                   <div
                     className="relative text-base leading-120 font-medium cursor-pointer text-black/90 transition-colors duration-300 hover:text-primary after:absolute after:left-0 after:-bottom-1.5 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full motion-reduce:after:transition-none"
@@ -192,7 +192,7 @@ export default function Home() {
       </header>
       <main>
         <section className="pt-5 pb-19">
-          <div className="container mx-auto">
+          <div className="container mx-auto px-4 xl:px-0">
             <div className="flex items-stretch gap-10">
               <Reveal className="w-[55%] flex flex-col justify-end">
                 <div className="space-y-37">
@@ -352,7 +352,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19">
-          <div className="container mx-auto">
+          <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-16">
               <Reveal className="space-y-6">
                 <div className="flex items-center justify-center">
@@ -393,7 +393,7 @@ export default function Home() {
                   </div>
                 </div>
               </Reveal>
-              <div className="flex items-stretch gap-8">
+              <div className="flex items-stretch gap-4 xl:gap-8">
                 <Reveal
                   delay={80}
                   className="group relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl"
@@ -408,7 +408,7 @@ export default function Home() {
                 </Reveal>
                 <Reveal
                   delay={160}
-                  className="flex-1 flex flex-col justify-between gap-8"
+                  className="flex-1 flex flex-col justify-between gap-6 xl:gap-8"
                 >
                   <div className="group relative overflow-hidden w-full flex-1 bg-gray-400 rounded-2xl">
                     <Image
@@ -420,7 +420,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-end gap-3">
+                    <div className="flex items-end gap-2 xl:gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
                         25<span className="text-primary">+</span>
                       </div>
@@ -430,7 +430,7 @@ export default function Home() {
                         Experience
                       </div>
                     </div>
-                    <div className="flex items-end gap-3">
+                    <div className="flex items-end gap-2 xl:gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
                         20<span className="text-primary">+</span>
                       </div>
@@ -440,7 +440,7 @@ export default function Home() {
                         Therapist
                       </div>
                     </div>
-                    <div className="flex items-end gap-3">
+                    <div className="flex items-end gap-2 xl:gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
                         98<span className="text-primary">%</span>
                       </div>
@@ -457,9 +457,9 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19 px-3">
-          <div className="bg-[#E3EEEE] rounded-2xl py-38">
-            <div className="container mx-auto">
-              <div className="flex items-stretch gap-20">
+          <div className="bg-[#E3EEEE] rounded-2xl py-24 xl:py-38">
+            <div className="container mx-auto px-4 xl:px-0">
+              <div className="flex items-stretch gap-12 xl:gap-20">
                 <Reveal className="w-1/2 space-y-8">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2">
@@ -503,10 +503,10 @@ export default function Home() {
                   </div>
                 </Reveal>
                 <Reveal delay={120} className="w-1/2 relative">
-                  <div className="absolute top-0 left-0 z-10 w-full h-full">
+                  <div className="hidden xl:block absolute top-0 left-0 z-10 w-full h-full">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
-                  <div className="absolute top-6 left-0 z-20 w-full h-[calc(100%-1.5rem)]">
+                  <div className="hidden xl:block absolute top-6 left-0 z-20 w-full h-[calc(100%-1.5rem)]">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
                   <div className="absolute bottom-0 left-0 z-30">
@@ -571,7 +571,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19">
-          <div className="container mx-auto">
+          <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-12">
               <Reveal className="space-y-6">
                 <div className="flex items-center justify-center">
@@ -612,7 +612,7 @@ export default function Home() {
                     />
                   </div>
                 </Reveal>
-                <div className="relative z-10 flex justify-center -mt-24">
+                <div className="relative z-10 flex justify-center -mt-24 px-6 xl:px-0">
                   <Reveal
                     delay={160}
                     className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6"
@@ -662,8 +662,8 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19">
-          <div className="container mx-auto">
-            <div className="flex items-stretch gap-12">
+          <div className="container mx-auto px-4 xl:px-0">
+            <div className="flex items-stretch gap-12 justify-between">
               <Reveal className="w-75 flex flex-col justify-between">
                 <div className="space-y-6">
                   <div className="flex items-center gap-2">
@@ -702,7 +702,7 @@ export default function Home() {
               </Reveal>
               <Reveal
                 delay={100}
-                className="group w-100 bg-gray-400 rounded-2xl relative overflow-hidden"
+                className="group hidden xl:block w-100 bg-gray-400 rounded-2xl relative overflow-hidden"
               >
                 <Image
                   src="/images/work_hero.png"
@@ -787,7 +787,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19 px-3">
+        <section className="py-19 px-4 xl:px-3">
           <Reveal className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
             <Image
               src="/images/cta_bg.png"
@@ -860,10 +860,10 @@ export default function Home() {
           </Reveal>
         </section>
         <section className="py-19">
-          <div className="container mx-auto">
+          <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-20">
-              <div className="flex items-stretch justify-between gap-12">
-                <Reveal className="w-92 flex flex-col justify-between">
+              <div className="flex items-stretch justify-between gap-8 xl:gap-12">
+                <Reveal className="w-82 xl:w-92 flex flex-col justify-between">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -1157,8 +1157,8 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19 px-3">
-          <div className="rounded-2xl bg-[#E3EEEE] py-38">
-            <div className="container mx-auto">
+          <div className="rounded-2xl bg-[#E3EEEE] py-24 xl:py-38">
+            <div className="container mx-auto px-4 xl:px-0">
               <div className="space-y-12">
                 <Reveal className="space-y-6">
                   <div className="flex items-center justify-center">
@@ -1368,9 +1368,9 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19">
-          <div className="container mx-auto">
-            <div className="flex items-stretch gap-16">
-              <Reveal className="w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
+          <div className="container mx-auto px-4 xl:px-0">
+            <div className="flex items-stretch gap-10 xl:gap-16">
+              <Reveal className="w-76 xl:w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
                 <div className="group rounded-xl bg-gray-400 h-105.5 relative overflow-hidden">
                   <Image
                     src="/images/faq_hero.png"
@@ -1415,7 +1415,7 @@ export default function Home() {
               </Reveal>
               <Reveal
                 delay={120}
-                className="flex-1 flex flex-col justify-between"
+                className="flex-1 flex flex-col justify-between gap-6"
               >
                 <div className="space-y-6">
                   <div className="flex items-center">
@@ -1506,8 +1506,8 @@ export default function Home() {
           </div>
         </section>
         <section className="pt-19 pb-38">
-          <div className="container mx-auto">
-            <div className="flex items-stretch gap-38">
+          <div className="container mx-auto px-4 xl:px-0">
+            <div className="flex items-stretch gap-16 xl:gap-38">
               <Reveal className="w-125.5">
                 <div className="space-y-20">
                   <div className="space-y-12">
@@ -1709,10 +1709,10 @@ export default function Home() {
       </main>
       <footer className="px-3 pb-3">
         <div className="bg-black rounded-2xl">
-          <div className="container mx-auto">
-            <div className="py-38 space-y-20">
-              <Reveal className="flex items-center justify-between">
-                <div className="w-186 p-6 rounded-xl bg-primary">
+          <div className="container mx-auto px-4 xl:px-0">
+            <div className="py-24 xl:py-38 space-y-20">
+              <Reveal className="flex items-center justify-between gap-6">
+                <div className="w-160 xl:w-186 p-6 rounded-xl bg-primary">
                   <div className="flex items-center gap-8">
                     <div className="group h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
                       <Image
