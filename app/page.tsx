@@ -93,16 +93,16 @@ function Reveal({
 
 /** Shared hover-affordance classes for pill buttons (transform/opacity/shadow only). */
 const btnPrimary =
-  "bg-primary py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "bg-primary py-3 px-5 md:px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1 md:gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const btnOutlinePrimary =
-  "border border-primary py-3 px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "border border-primary py-3 px-5 md:px-6 rounded-full text-primary leading-120 text-sm font-medium flex items-center gap-1 md:gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const btnOutlineWhite =
-  "border border-white py-3 px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-black hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "border border-white py-3 px-5 md:px-6 rounded-full text-white leading-120 text-sm font-medium flex items-center gap-1 md:gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-black hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const btnSolidWhite =
-  "bg-white py-3 px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "bg-white py-3 px-5 md:px-6 rounded-full text-black leading-120 text-sm font-medium flex items-center gap-1 md:gap-1.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 /** Arrow icon nudges slightly on parent hover (uses group). */
 const arrowIconClass =
@@ -162,7 +162,7 @@ export default function Home() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-white cursor-pointer transition-opacity duration-300 hover:opacity-70"
+                className="text-white cursor-pointer transition-opacity duration-300 hover:opacity-70 hidden md:block"
               >
                 <path d="M4 5h16" />
                 <path d="M4 12h16" />
@@ -191,7 +191,7 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <section className="pt-28 lg:pt-5 pb-19">
+        <section className="pt-28 lg:pt-5 pb-10 md:pb-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="flex flex-col lg:flex-row items-stretch gap-10">
               <Reveal className="w-full lg:w-[55%] flex flex-col justify-end">
@@ -204,7 +204,7 @@ export default function Home() {
                           Mental Clarity
                         </div>
                       </div>
-                      <h1 className="text-[64px] font-semibold leading-120 tracking-[-3%]">
+                      <h1 className="text-[42px] md:text-[64px] font-semibold leading-120 tracking-[-3%]">
                         Find Balance Trusted{" "}
                         <span className="font-playfair-display italic">
                           Mental Health Experts
@@ -216,7 +216,7 @@ export default function Home() {
                         growth guided by professional licensed psychologists.
                       </p>
                     </div>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-start md:items-center gap-2 md:gap-6">
                       <div className={`group ${btnPrimary}`}>
                         Book A Session
                         <svg
@@ -315,7 +315,7 @@ export default function Home() {
                   priority
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                 />
-                <div className="absolute top-45 left-28">
+                <div className="absolute top-18 md:top-45 left-6 md:left-28">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
@@ -323,7 +323,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-65 right-18">
+                <div className="absolute top-32 md:top-65 right-6 md:right-18">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
@@ -331,7 +331,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bottom-74 left-12">
+                <div className="absolute bottom-46 md:bottom-74 left-6 md:left-12">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
@@ -339,7 +339,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bottom-47 right-20">
+                <div className="absolute bottom-24 md:bottom-47 right-6 md:right-20">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 ease-out hover:scale-105 motion-reduce:transition-none">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="text-sm leading-[150%] text-white">
@@ -419,7 +419,7 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                     />
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col md:flex-row items-center justify-between">
                     <div className="flex items-end gap-2 xl:gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
                         25<span className="text-primary">+</span>
@@ -459,8 +459,8 @@ export default function Home() {
         <section className="py-19 px-3">
           <div className="bg-[#E3EEEE] rounded-2xl py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
-              <div className="flex items-stretch gap-12 xl:gap-20">
-                <Reveal className="w-1/2 space-y-8">
+              <div className="flex flex-col md:flex-row items-stretch gap-12 xl:gap-20">
+                <Reveal className="md:w-1/2 space-y-8">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -502,7 +502,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Reveal>
-                <Reveal delay={120} className="w-1/2 relative">
+                <Reveal delay={120} className="md:w-1/2 relative">
                   <div className="hidden xl:block absolute top-0 left-0 z-10 w-full h-full">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
@@ -615,7 +615,7 @@ export default function Home() {
                 <div className="relative z-10 flex justify-center lg:-mt-24 lg:px-6 xl:px-0">
                   <Reveal
                     delay={160}
-                    className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6"
+                    className="p-6 rounded-2xl bg-[#E3EEED] flex flex-col md:flex-row items-center justify-center gap-6"
                   >
                     <div className="p-6 rounded-2xl bg-white space-y-4 max-w-88 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="font-semibold text-[22px] leading-120">
@@ -1177,7 +1177,7 @@ export default function Home() {
                     </span>
                   </h2>
                 </Reveal>
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                   <Reveal delay={0} className="space-y-4">
                     <div className="group w-full h-85 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
@@ -1532,7 +1532,7 @@ export default function Home() {
                         and choose a time that fits your needs and schedule.
                       </p>
                     </div>
-                    <div className="flex items-center gap-16">
+                    <div className="flex flex-col md:flex-row items-center gap-16">
                       <div className="flex items-center gap-3 transition-transform duration-300 ease-out hover:-translate-y-0.5 motion-reduce:transition-none">
                         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                           <svg
@@ -1713,7 +1713,7 @@ export default function Home() {
             <div className="py-16 lg:py-24 xl:py-38 space-y-20">
               <Reveal className="flex flex-col lg:flex-row items-center justify-between gap-6">
                 <div className="lg:w-160 xl:w-186 p-6 rounded-xl bg-primary">
-                  <div className="flex items-center gap-8">
+                  <div className="flex flex-col md:flex-row items-center gap-8">
                     <div className="group h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
                       <Image
                         src="/images/footer_hero.png"
