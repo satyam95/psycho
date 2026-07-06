@@ -787,8 +787,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19 px-4 xl:px-3">
-          <Reveal className="w-full h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+        <section className="py-10 md:py-19 px-4 xl:px-3">
+          <Reveal className="w-full h-120 md:h-145 bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
             <Image
               src="/images/cta_bg.png"
               alt="hero image"
@@ -797,7 +797,7 @@ export default function Home() {
               className="object-cover"
             />
             <div className="relative z-10 space-y-8">
-              <div className="space-y-6">
+              <div className="space-y-6 px-4">
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-white rounded-full" />
@@ -806,7 +806,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h2 className="text-center text-white text-[48px] font-semibold leading-120 tracking-[-3%]">
+                <h2 className="text-center text-white text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                   Take the First Step
                   <br />
                   <span className="font-playfair-display italic">
