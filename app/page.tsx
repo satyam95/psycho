@@ -140,7 +140,7 @@ export default function Home() {
                 Mind
                 <span className="font-playfair-display italic">era</span>
               </div>
-              <div className="flex items-center gap-6 xl:gap-8">
+              <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                 {navItems.map((item) => (
                   <div
                     className="relative text-base leading-120 font-medium cursor-pointer text-black/90 transition-colors duration-300 hover:text-primary after:absolute after:left-0 after:-bottom-1.5 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full motion-reduce:after:transition-none"
@@ -191,14 +191,14 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <section className="pt-5 pb-19">
+        <section className="pt-28 lg:pt-5 pb-19">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="flex items-stretch gap-10">
-              <Reveal className="w-[55%] flex flex-col justify-end">
-                <div className="space-y-37">
+            <div className="flex flex-col lg:flex-row items-stretch gap-10">
+              <Reveal className="w-full lg:w-[55%] flex flex-col justify-end">
+                <div className="space-y-10 lg:space-y-37">
                   <div className="space-y-8">
                     <div className="space-y-6">
-                      <div className="flex items-center gap-2">
+                      <div className="hidden lg:flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                         <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
                           Mental Clarity
@@ -306,7 +306,7 @@ export default function Home() {
               </Reveal>
               <Reveal
                 delay={120}
-                className="group relative overflow-hidden w-[45%] h-195 bg-gray-400 rounded-2xl"
+                className="group relative overflow-hidden w-full lg:w-[45%] h-152 lg:h-195 bg-gray-400 rounded-2xl"
               >
                 <Image
                   src="/images/hero.png"
@@ -353,7 +353,7 @@ export default function Home() {
         </section>
         <section className="py-19">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="space-y-16">
+            <div className="space-y-10 lg:space-y-16">
               <Reveal className="space-y-6">
                 <div className="flex items-center justify-center">
                   <div className="flex items-center gap-2">
@@ -363,7 +363,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-[32px] leading-150 font-medium text-center px-10">
+                <h3 className="text-[28px] lg:text-[32px] leading-150 font-medium text-center px-10">
                   At Mindora, we believe mental wellness is a vital part of a
                   fulfilling life. Our licensed therapists provide{" "}
                   <span className="text-[#51575C]">
@@ -396,7 +396,7 @@ export default function Home() {
               <div className="flex items-stretch gap-4 xl:gap-8">
                 <Reveal
                   delay={80}
-                  className="group relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl"
+                  className="hidden lg:block group relative overflow-hidden w-[475px] h-[600px] bg-gray-400 rounded-2xl"
                 >
                   <Image
                     src="/images/about_1.png"
@@ -457,7 +457,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19 px-3">
-          <div className="bg-[#E3EEEE] rounded-2xl py-24 xl:py-38">
+          <div className="bg-[#E3EEEE] rounded-2xl py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
               <div className="flex items-stretch gap-12 xl:gap-20">
                 <Reveal className="w-1/2 space-y-8">
@@ -590,7 +590,7 @@ export default function Home() {
                   </span>
                 </h2>
               </Reveal>
-              <div className="space-y-0">
+              <div className="space-y-6 lg:space-y-0">
                 <Reveal
                   delay={80}
                   className="group aspect-[32/15] bg-gray-400 rounded-2xl flex items-center justify-center relative overflow-hidden cursor-pointer"
@@ -612,7 +612,7 @@ export default function Home() {
                     />
                   </div>
                 </Reveal>
-                <div className="relative z-10 flex justify-center -mt-24 px-6 xl:px-0">
+                <div className="relative z-10 flex justify-center lg:-mt-24 lg:px-6 xl:px-0">
                   <Reveal
                     delay={160}
                     className="p-6 rounded-2xl bg-[#E3EEED] flex items-center justify-center gap-6"
@@ -663,9 +663,9 @@ export default function Home() {
         </section>
         <section className="py-19">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="flex items-stretch gap-12 justify-between">
-              <Reveal className="w-75 flex flex-col justify-between">
-                <div className="space-y-6">
+            <div className="flex flex-col lg:flex-row items-stretch gap-18 lg:gap-12 justify-between">
+              <Reveal className="w-full lg:w-75 flex flex-col gap-8 justify-between">
+                <div className="space-y-4 lg:space-y-6">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                     <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
@@ -712,7 +712,7 @@ export default function Home() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                 />
               </Reveal>
-              <Reveal delay={200} className="w-121 space-y-12">
+              <Reveal delay={200} className="w-full lg:w-121 space-y-8 lg:space-y-12">
                 <div className="flex items-start gap-3 transition-transform duration-300 ease-out hover:translate-x-1 motion-reduce:transition-none">
                   <div className="mt-1 min-w-5 min-h-5 rounded-full border border-primary flex items-center justify-center">
                     <div className="min-w-3 min-h-3 rounded-full bg-primary" />
@@ -862,9 +862,9 @@ export default function Home() {
         <section className="py-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-20">
-              <div className="flex items-stretch justify-between gap-8 xl:gap-12">
-                <Reveal className="w-82 xl:w-92 flex flex-col justify-between">
-                  <div className="space-y-6">
+              <div className="flex flex-col lg:flex-row items-stretch justify-between gap-16 lg:gap-8 xl:gap-12">
+                <Reveal className="lg:w-82 xl:w-92 flex flex-col justify-between">
+                  <div className="space-y-4 lg:space-y-6">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       <div className="text-sm leading-150 tracking-[8%] font-medium uppercase">
@@ -878,7 +878,7 @@ export default function Home() {
                       </span>
                     </h2>
                   </div>
-                  <div className="space-y-5">
+                  <div className="hidden lg:block space-y-5">
                     <div className="flex items-center">
                       <div className="relative overflow-hidden w-13 h-13 rounded-full border-3 border-white bg-[#C4C4C4] transition-transform duration-300 ease-out hover:-translate-y-1 hover:z-10 motion-reduce:transition-none">
                         <Image
@@ -918,7 +918,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Reveal>
-                <Reveal delay={120} className="w-191 space-y-6">
+                <Reveal delay={120} className="lg:w-191 space-y-6">
                   <div className="p-6 bg-[#E3EEED] rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none">
                     <div className="flex items-stretch justify-between gap-8">
                       <div className="group w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden cursor-pointer">
@@ -1157,7 +1157,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-19 px-3">
-          <div className="rounded-2xl bg-[#E3EEEE] py-24 xl:py-38">
+          <div className="rounded-2xl bg-[#E3EEEE] py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
               <div className="space-y-12">
                 <Reveal className="space-y-6">
@@ -1369,8 +1369,8 @@ export default function Home() {
         </section>
         <section className="py-19">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="flex items-stretch gap-10 xl:gap-16">
-              <Reveal className="w-76 xl:w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
+            <div className="flex flex-col-reverse lg:flex-row items-stretch gap-10 xl:gap-16">
+              <Reveal className="lg:w-76 xl:w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
                 <div className="group rounded-xl bg-gray-400 h-105.5 relative overflow-hidden">
                   <Image
                     src="/images/faq_hero.png"
@@ -1415,9 +1415,9 @@ export default function Home() {
               </Reveal>
               <Reveal
                 delay={120}
-                className="flex-1 flex flex-col justify-between gap-6"
+                className="flex-1 flex flex-col justify-between gap-12 lg:gap-6"
               >
-                <div className="space-y-6">
+                <div className="space-y-4 lg:space-y-6">
                   <div className="flex items-center">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -1507,9 +1507,9 @@ export default function Home() {
         </section>
         <section className="pt-19 pb-38">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="flex items-stretch gap-16 xl:gap-38">
-              <Reveal className="w-125.5">
-                <div className="space-y-20">
+            <div className="flex flex-col lg:flex-row items-stretch gap-16 xl:gap-38">
+              <Reveal className="lg:w-125.5">
+                <div className="lg:space-y-20">
                   <div className="space-y-12">
                     <div className="space-y-6">
                       <div className="flex items-center">
@@ -1588,7 +1588,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="hidden lg:grid grid-cols-2 gap-6">
                     <div className="group w-full h-60 rounded-2xl bg-gray-400 relative overflow-hidden">
                       <Image
                         src="/images/form_hero.png"
@@ -1612,7 +1612,7 @@ export default function Home() {
               </Reveal>
               <Reveal
                 delay={140}
-                className="flex-1 flex flex-col justify-between"
+                className="flex-1 flex flex-col gap-6 justify-between"
               >
                 <div className="space-y-8">
                   <div className="grid grid-cols-2 gap-8">
@@ -1710,9 +1710,9 @@ export default function Home() {
       <footer className="px-3 pb-3">
         <div className="bg-black rounded-2xl">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="py-24 xl:py-38 space-y-20">
-              <Reveal className="flex items-center justify-between gap-6">
-                <div className="w-160 xl:w-186 p-6 rounded-xl bg-primary">
+            <div className="py-16 lg:py-24 xl:py-38 space-y-20">
+              <Reveal className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div className="lg:w-160 xl:w-186 p-6 rounded-xl bg-primary">
                   <div className="flex items-center gap-8">
                     <div className="group h-43 w-70 bg-gray-400 rounded-lg relative overflow-hidden">
                       <Image
@@ -1754,7 +1754,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="w-85 space-y-6">
+                <div className="lg:w-85 space-y-6">
                   <div className="text-5xl leading-120 tracking-[-3%] font-semibold text-white">
                     Mind
                     <span className="font-playfair-display italic">era</span>
@@ -1766,8 +1766,8 @@ export default function Home() {
                   </p>
                 </div>
               </Reveal>
-              <Reveal delay={100} className="flex items-start justify-between">
-                <div className="space-y-4 w-27">
+              <Reveal delay={100} className="flex flex-wrap gap-x-20 gap-y-10 lg:gap-0 items-start lg:justify-between">
+                <div className="space-y-4 lg:w-27">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Company
                   </div>
@@ -1786,7 +1786,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4 w-48">
+                <div className="space-y-4 lg:w-48">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Services
                   </div>
@@ -1805,7 +1805,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4 w-27">
+                <div className="space-y-4 lg:w-27">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Resources
                   </div>
@@ -1824,7 +1824,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4 w-68">
+                <div className="space-y-4 lg:w-68">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Social Media
                   </div>
@@ -1853,7 +1853,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4 w-37">
+                <div className="space-y-4 lg:w-37">
                   <div className="text-[#D8D8D8] text-sm font-medium uppercase leading-120 tracking-[-8%]">
                     Contact Info
                   </div>
