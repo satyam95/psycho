@@ -859,10 +859,10 @@ export default function Home() {
             </div>
           </Reveal>
         </section>
-        <section className="py-19">
+        <section className="py-10 md:py-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-20">
-              <div className="flex flex-col lg:flex-row items-stretch justify-between gap-16 lg:gap-8 xl:gap-12">
+              <div className="flex flex-col lg:flex-row items-stretch justify-between gap-10 md:gap-16 lg:gap-8 xl:gap-12">
                 <Reveal className="lg:w-82 xl:w-92 flex flex-col justify-between">
                   <div className="space-y-4 lg:space-y-6">
                     <div className="flex items-center gap-2">
@@ -871,7 +871,7 @@ export default function Home() {
                         Client Stories
                       </div>
                     </div>
-                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                    <h2 className="text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                       What Our Clients{" "}
                       <span className="font-playfair-display italic">
                         Say About Us
@@ -920,7 +920,7 @@ export default function Home() {
                 </Reveal>
                 <Reveal delay={120} className="lg:w-191 space-y-6">
                   <div className="p-6 bg-[#E3EEED] rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none">
-                    <div className="flex items-stretch justify-between gap-8">
+                    <div className="flex flex-col md:flex-row items-stretch justify-between gap-8">
                       <div className="group w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden cursor-pointer">
                         <Image
                           src="/images/client_1.png"
@@ -1010,7 +1010,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="p-6 bg-[#E3EEED] rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none">
-                    <div className="flex items-stretch justify-between gap-8">
+                    <div className="flex flex-col md:flex-row items-stretch justify-between gap-8">
                       <div className="group w-71 h-67 bg-gray-400 rounded-lg relative overflow-hidden cursor-pointer">
                         <Image
                           src="/images/client_2.png"
@@ -1101,7 +1101,7 @@ export default function Home() {
                   </div>
                 </Reveal>
               </div>
-              <Reveal className="space-y-12">
+              <Reveal className="space-y-10 md:space-y-12">
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -1110,7 +1110,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-center gap-6">
+                <div className="flex items-center justify-center gap-6 flex-wrap">
                   <div className="h-25 w-63 bg-[#F6F6F6] hover:bg-[#E3EEED] rounded-xl flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none">
                     <Image
                       src="/company-logo.png"
