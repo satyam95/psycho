@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Raleway, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -29,7 +31,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
