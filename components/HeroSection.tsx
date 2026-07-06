@@ -1,9 +1,5 @@
 import Reveal from "@/animations";
-import {
-  arrowIconClass,
-  btnOutlinePrimary,
-  btnPrimary,
-} from "@/animations/buttons";
+import { arrowIconClass, btnOutlinePrimary, btnPrimary } from "@/animations/buttons";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -35,7 +31,7 @@ const HeroSection = () => {
                 </div>
                 <div className="flex items-start md:items-center gap-2 md:gap-6">
                   <div className={`group ${btnPrimary}`}>
-                    Book A Session
+                    Book a Session
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -52,7 +48,7 @@ const HeroSection = () => {
                       <path d="m12 5 7 7-7 7" />
                     </svg>
                   </div>
-                  <div className={`group ${btnOutlinePrimary}`}>
+                  <div className={`group ${btnOutlinePrimary} hidden md:flex`}>
                     Explore Services
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
