@@ -1156,7 +1156,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19 px-3">
+        <section className="py-10 md:py-19 px-3">
           <div className="rounded-2xl bg-[#E3EEEE] py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
               <div className="space-y-12">
@@ -1169,7 +1169,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  <h2 className="text-center text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                     Meet the Therapists
                     <br />
                     <span className="font-playfair-display italic">
@@ -1367,7 +1367,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19">
+        <section className="py-10 md:py-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="flex flex-col-reverse lg:flex-row items-stretch gap-10 xl:gap-16">
               <Reveal className="lg:w-76 xl:w-122 rounded-2xl bg-[#E3EEEE] p-8 space-y-6">
@@ -1426,7 +1426,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  <h2 className="text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                     Get Clear Answers Common Their
                     <br />
                     <span className="font-playfair-display italic">
@@ -1505,7 +1505,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="pt-19 pb-38">
+        <section className="pt-10 md:pt-19 pb-20 md:pb-38">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="flex flex-col lg:flex-row items-stretch gap-16 xl:gap-38">
               <Reveal className="lg:w-125.5">
@@ -1520,7 +1520,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                      <h2 className="text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                         Schedule Your Therapy
                         <br />
                         <span className="font-playfair-display italic">
@@ -1532,7 +1532,7 @@ export default function Home() {
                         and choose a time that fits your needs and schedule.
                       </p>
                     </div>
-                    <div className="flex flex-col md:flex-row items-center gap-16">
+                    <div className="flex flex-col md:flex-row md:items-center gap-16">
                       <div className="flex items-center gap-3 transition-transform duration-300 ease-out hover:-translate-y-0.5 motion-reduce:transition-none">
                         <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                           <svg
@@ -1615,7 +1615,7 @@ export default function Home() {
                 className="flex-1 flex flex-col gap-6 justify-between"
               >
                 <div className="space-y-8">
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid-cols-1 md:grid grid-cols-2 gap-8">
                     <div className="space-y-4">
                       <div className="text-sm leading-120 tracking-[-3%] font-medium">
                         First Name
@@ -1710,7 +1710,7 @@ export default function Home() {
       <footer className="px-3 pb-3">
         <div className="bg-black rounded-2xl">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="py-16 lg:py-24 xl:py-38 space-y-20">
+            <div className="py-16 lg:py-24 xl:py-38 space-y-10 md:space-y-20">
               <Reveal className="flex flex-col lg:flex-row items-center justify-between gap-6">
                 <div className="lg:w-160 xl:w-186 p-6 rounded-xl bg-primary">
                   <div className="flex flex-col md:flex-row items-center gap-8">
@@ -1877,7 +1877,7 @@ export default function Home() {
               </div>
               <button
                 onClick={scrollToTop}
-                className="group text-base leading-120 text-white p-2 border border-white rounded-full flex items-center gap-3 transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-0.5 motion-reduce:transition-none"
+                className="group text-base leading-120 text-white p-2 border border-white rounded-full hidden md:flex items-center gap-3 transition-all duration-300 ease-out hover:bg-white hover:text-black hover:-translate-y-0.5 motion-reduce:transition-none"
               >
                 <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
                   <svg
