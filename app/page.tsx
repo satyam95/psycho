@@ -661,9 +661,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19">
+        <section className="py-10 md:py-19">
           <div className="container mx-auto px-4 xl:px-0">
-            <div className="flex flex-col lg:flex-row items-stretch gap-18 lg:gap-12 justify-between">
+            <div className="flex flex-col lg:flex-row items-stretch gap-10 md:gap-18 lg:gap-12 justify-between">
               <Reveal className="w-full lg:w-75 flex flex-col gap-8 justify-between">
                 <div className="space-y-4 lg:space-y-6">
                   <div className="flex items-center gap-2">
@@ -672,7 +672,7 @@ export default function Home() {
                       How It Works
                     </div>
                   </div>
-                  <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                  <h2 className="text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                     Guided Steps{" "}
                     <span className="font-playfair-display italic">
                       Toward Better Mental Health
