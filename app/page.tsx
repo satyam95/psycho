@@ -351,7 +351,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19">
+        <section className="py-10 md:py-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-10 lg:space-y-16">
               <Reveal className="space-y-6">
@@ -363,7 +363,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-[28px] lg:text-[32px] leading-150 font-medium text-center px-10">
+                <h3 className="text-[22px] md:text-[28px] lg:text-[32px] leading-150 font-medium text-center md:px-10">
                   At Mindora, we believe mental wellness is a vital part of a
                   fulfilling life. Our licensed therapists provide{" "}
                   <span className="text-[#51575C]">
@@ -419,7 +419,7 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                     />
                   </div>
-                  <div className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
                     <div className="flex items-end gap-2 xl:gap-3">
                       <div className="text-6xl leading-120 font-semibold font-playfair-display">
                         25<span className="text-primary">+</span>
@@ -456,7 +456,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19 px-3">
+        <section className="py-10 md:py-19 px-4">
           <div className="bg-[#E3EEEE] rounded-2xl py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
               <div className="flex flex-col md:flex-row items-stretch gap-12 xl:gap-20">
