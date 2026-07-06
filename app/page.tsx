@@ -457,7 +457,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-10 md:py-19 px-4">
-          <div className="bg-[#E3EEEE] rounded-2xl py-16 lg:py-24 xl:py-38">
+          <div className="bg-[#E3EEEE] rounded-2xl py-10 md:py-16 lg:py-24 xl:py-38">
             <div className="container mx-auto px-4 xl:px-0">
               <div className="flex flex-col md:flex-row items-stretch gap-12 xl:gap-20">
                 <Reveal className="md:w-1/2 space-y-8">
@@ -468,7 +468,7 @@ export default function Home() {
                         Our Services
                       </div>
                     </div>
-                    <h2 className="text-[48px] font-semibold leading-120 tracking-[-3%]">
+                    <h2 className="text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                       Professional Mental Health{" "}
                       <span className="font-playfair-display italic">
                         Support Tailored to You
@@ -509,7 +509,7 @@ export default function Home() {
                   <div className="hidden xl:block absolute top-6 left-0 z-20 w-full h-[calc(100%-1.5rem)]">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] h-full"></div>
                   </div>
-                  <div className="absolute bottom-0 left-0 z-30">
+                  <div className="md:absolute bottom-0 left-0 z-30">
                     <div className="bg-white rounded-xl border border-[#EEF2F5] p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl motion-reduce:transition-none">
                       <div className="space-y-8">
                         <div className="flex items-center justify-between">
@@ -550,7 +550,7 @@ export default function Home() {
                               guided sessions.
                             </p>
                           </div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
                             <div className="text-sm leading-150 text-[#51575C] px-3 py-1.5 rounded-full border border-[#EEF2F5] transition-colors duration-300 hover:border-primary hover:text-primary">
                               Group Healing
                             </div>
