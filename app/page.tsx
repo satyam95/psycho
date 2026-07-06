@@ -570,7 +570,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-19">
+        <section className="py-10 md:py-19">
           <div className="container mx-auto px-4 xl:px-0">
             <div className="space-y-12">
               <Reveal className="space-y-6">
@@ -582,7 +582,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h2 className="text-center text-[48px] font-semibold leading-120 tracking-[-3%]">
+                <h2 className="text-center text-[32px] md:text-[48px] font-semibold leading-120 tracking-[-3%]">
                   Trusted Mental Health Support
                   <br />
                   <span className="font-playfair-display italic">
@@ -602,13 +602,13 @@ export default function Home() {
                     priority
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
                   />
-                  <div className="relative z-10 h-24 w-24 rounded-full bg-white flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none">
+                  <div className="relative z-10 h-14 w-14 md:h-24 md:w-24 rounded-full bg-white flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none">
                     <Image
                       src="/play.png"
                       alt="play"
                       width={24}
                       height={31}
-                      className="ml-2"
+                      className="ml-1 w-4 h-4 md:w-6 md:h-[31px]"
                     />
                   </div>
                 </Reveal>
